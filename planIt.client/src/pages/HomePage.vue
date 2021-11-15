@@ -1,19 +1,8 @@
 <template>
   <div class="row m-0">
-    <div class="col-3"></div>
     <Navbar />
-    <div class="col-3"></div>
-    <div
-      class="
-        home
-        flex-grow-1
-        d-flex
-        flex-column
-        align-items-center
-        justify-content-center
-      "
-    >
-      <div class="home-card p-5 bg-white rounded elevation-3"></div>
+    <div class="row">
+      <HomeCard />
     </div>
   </div>
 </template>

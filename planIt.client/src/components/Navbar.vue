@@ -24,16 +24,9 @@
           </router-link>
         </li>
       </ul>
-      <span class="navbar-text">
+      <span class="navbar-text mx-4">
         <button
-          class="
-            btn
-            selectable
-            text-success
-            lighten-30
-            text-uppercase
-            my-2 my-lg-0
-          "
+          class="btn btn-success selectable text-dark lighten-30 my-lg-0"
           @click="login"
           v-if="!user.isAuthenticated"
         >
@@ -51,7 +44,7 @@
               :src="user.picture"
               alt="user photo"
               height="40"
-              class="rounded"
+              class="profilePhoto"
             />
             <span class="mx-3 text-success lighten-30">{{ user.name }}</span>
           </div>
@@ -59,11 +52,11 @@
             class="dropdown-menu p-0 list-group w-100"
             aria-labelledby="authDropdown"
           >
-            <router-link :to="{ name: 'Account' }">
+            <!-- <router-link :to="{ name: 'Account' }">
               <div class="list-group-item list-group-item-action hoverable">
                 Manage Account
               </div>
-            </router-link>
+            </router-link> -->
             <div
               class="
                 list-group-item list-group-item-action
@@ -73,7 +66,7 @@
               @click="logout"
             >
               <i class="mdi mdi-logout"></i>
-              logout
+              Logout
             </div>
           </div>
         </div>
@@ -102,12 +95,15 @@ export default {
 </script>
 
 <style scoped>
+.profilePhoto {
+  border-radius: 50%;
+}
 .planetImg {
   height: 5rem;
 }
 .planItText {
   font-family: Impact, "Arial Narrow Bold", sans-serif;
-  background: -webkit-linear-gradient(rgb(149, 148, 216), rgb(224, 223, 223));
+  background: -webkit-linear-gradient(#9594d8, #f7b9ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

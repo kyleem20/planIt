@@ -1,7 +1,5 @@
 <template>
-  <div class="about">
-    <h1>This is the PlanIt page</h1>
-  </div>
+  <Navbar />
 </template>
 
 <script>
