@@ -1,16 +1,14 @@
-import { SprintSchema } from './Sprint'
-
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 export const TaskSchema = new Schema(
   {
-    title: { type: String, required: true },
-    completed: { type: Boolean, default: false },
-    weight: { type: Number },
+    name: { type: String, required: true },
+    isComplete: { type: Boolean, default: false },
+    weight: { type: Number, default: 1 },
     creatorId: { type: Schema.Types.ObjectId, ref: 'Profile', required: true },
+    projectId: { type: Schema.Types.ObjectId, ref: 'Project', required: true },
     sprintId: { type: Schema.Types.ObjectId, ref: 'Sprint', required: true }
-
   }, { timestamps: true, toJSON: { virtuals: true } }
 )
 
@@ -21,10 +19,16 @@ TaskSchema.virtual('creator', {
   ref: 'Profile'
 })
 
-SprintSchema.virtual('sprint', {
+TaskSchema.virtual('sprint', {
   localField: 'sprintId',
   foreignField: '_id',
   justOne: true,
   ref: 'Sprint'
-}
-)
+})
+
+TaskSchema.virtual('project', {
+  localField: 'projectId',
+  foreignField: '_id',
+  justOne: true,
+  ref: 'Project'
+})
