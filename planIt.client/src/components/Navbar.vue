@@ -133,10 +133,6 @@ a:hover {
 
 .navbar {
   background: rgb(174, 198, 238);
-  background: radial-gradient(
-    circle,
-    rgba(174, 198, 238, 1) 0%,
-    rgba(1, 53, 113, 1) 100%
-  );
+  background: radial-gradient(circle, #aec6ee 0%, #013571 100%);
 }
 </style>
