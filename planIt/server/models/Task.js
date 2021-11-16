@@ -4,8 +4,8 @@ const Schema = mongoose.Schema
 export const TaskSchema = new Schema(
   {
     name: { type: String, required: true },
-    isComplete: { type: Boolean, default: false },
-    weight: { type: Number, default: 1 },
+    isComplete: { type: Boolean, default: false, required: true },
+    weight: { type: Number, default: 1, required: true },
     creatorId: { type: Schema.Types.ObjectId, ref: 'Profile', required: true },
     projectId: { type: Schema.Types.ObjectId, ref: 'Project', required: true },
     sprintId: { type: Schema.Types.ObjectId, ref: 'Sprint', required: true }
