@@ -1,7 +1,7 @@
 <template>
-  <div class="row">
+  <div class="row" align="left">
     <div class="form-check">
-      <label class="form-check-label">
+      <label class="form-check-label ms-3">
         <input
           type="checkbox"
           class="form-check-input"

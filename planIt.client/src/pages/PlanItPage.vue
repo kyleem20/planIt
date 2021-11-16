@@ -30,7 +30,7 @@
         Add Sprint
       </button>
     </div>
-    <SprintCard />
+    <SprintCard class="mb-3" />
   </div>
 </template>
 

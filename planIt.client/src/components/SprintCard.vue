@@ -8,7 +8,13 @@
           d-flex
           justify-content-between
           align-items-center
+          btn
         "
+        data-bs-toggle="collapse"
+        href="#sprintDrawer"
+        role="button"
+        aria-expanded="false"
+        aria-controls="collapseExample"
       >
         <h5 class="sprintInfoText">SPRINT # AND NAME</h5>
         <p>
@@ -20,13 +26,20 @@
         </button>
         <p><b>0/0 Tasks Complete</b></p>
       </div>
-      <div class="card-body d-flex justify-content-between">
-        <Task />
-        <div class="d-flex align-items-end justify-content-center">
-          <button class="deleteSprint">
-            DELETE SPRINT &nbsp;&nbsp;
-            <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
-          </button>
+      <div class="collapse mb-3" id="sprintDrawer">
+        <div class="row">
+          <div
+            class="card-body d-flex justify-content-between collapse"
+            data-bs-toggle="collapse"
+          >
+            <Task />
+            <div class="d-flex align-items-end justify-content-center">
+              <button class="deleteSprint">
+                DELETE SPRINT &nbsp;&nbsp;
+                <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
