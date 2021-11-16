@@ -28,17 +28,7 @@
             </div>
             <hr />
           </div>
-          <div class="row PX-3">
-            <div class="col-4">
-              <p class="subHeadText">PROJECT NAME</p>
-            </div>
-            <div class="col-4">
-              <p class="subHeadText">PEOPLE IN THE PROJECT</p>
-            </div>
-            <div class="col-4">
-              <p class="subHeadText">DATE</p>
-            </div>
-          </div>
+          <HPProject />
         </div>
       </div>
     </center>
