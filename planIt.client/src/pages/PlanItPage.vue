@@ -18,7 +18,7 @@
         </p>
       </span>
     </div>
-    <div class="col-4"></div>
+    <div class="col-1"></div>
   </div>
 </template>
 
