@@ -8,7 +8,13 @@
           d-flex
           justify-content-between
           align-items-center
+          btn
         "
+        data-bs-toggle="collapse"
+        href="#sprintDrawer"
+        role="button"
+        aria-expanded="false"
+        aria-controls="collapseExample"
       >
         <h5 class="sprintInfoText">SPRINT # AND NAME</h5>
         <p>
@@ -18,26 +24,23 @@
         <button class="btn createTaskBtn border-primary addSprintBtn mb-4">
           Add Task
         </button>
-        <p>0/0 Tasks Complete</p>
+        <p><b>0/0 Tasks Complete</b></p>
       </div>
-      <div class="card-body d-flex justify-content-between">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              name=""
-              id=""
-              value="checkedValue"
-              checked
-            />
-            TASK
-          </label>
+      <div class="collapse mb-3" id="sprintDrawer">
+        <div class="row">
+          <div
+            class="card-body d-flex justify-content-between collapse"
+            data-bs-toggle="collapse"
+          >
+            <Task />
+            <div class="d-flex align-items-end justify-content-center">
+              <button class="deleteSprint">
+                DELETE SPRINT &nbsp;&nbsp;
+                <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
+              </button>
+            </div>
+          </div>
         </div>
-        <p>
-          [WEIGHT]
-          <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
-        </p>
       </div>
     </div>
   </div>
@@ -54,9 +57,20 @@ export default {
 
 
 <style lang="scss" scoped>
+.trashCan {
+  height: 25px;
+}
 .sprintInfoText {
   font-weight: 500;
   font-family: "Lucida Sans", "Lucida Sans Regular", Verdana;
+}
+.deleteSprint {
+  border: none;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#f7b9ff, #844586);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .weight {
   height: 25px;

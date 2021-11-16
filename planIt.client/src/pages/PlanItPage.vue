@@ -1,7 +1,14 @@
 <template>
   <Navbar />
   <div class="row m-0 sprintInfoRow justify-content-between">
-    <div class="col-1 pt-4">Side tabs</div>
+    <div class="col-1 sideTabBtns pt-4">
+      <button class="btn">
+        <img src="https://i.imgur.com/395nkyu.png" />
+      </button>
+      <button class="btn">
+        <img src="https://i.imgur.com/wN5zZ7n.png" />
+      </button>
+    </div>
     <div class="col-6 pt-4">
       <h1 class="pnText">PROJECT NAME</h1>
       <p>Project subtitle / brief description</p>
@@ -16,18 +23,37 @@
     <div class="col-4 mx-3 d-flex align-items-end justify-content-center">
       <button
         class="btn btn-primary createSprintBtn border-primary addSprintBtn mb-4"
+        data-bs-toggle="modal"
+        data-bs-target="#sprint-modal"
       >
-        <img src="https://i.imgur.com/Igkic40.png" class="addSprintPlanet" />
+        <img src="https://i.imgur.com/nWwcfAc.png" class="addSprintPlanet" />
         Add Sprint
       </button>
     </div>
+    <SprintCard class="mb-3" />
   </div>
-  <SprintCard />
 </template>
 
 <script>
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
+import { computed, onMounted } from "@vue/runtime-core";
+import { AppState } from "../AppState";
 export default {
-  name: 'AboutPage'
+  name: 'PlanItPage',
+  setup() {
+    onMounted(async () => {
+      try {
+
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, "Error on the PlanIt Page")
+      }
+    });
+    return {
+      sprint: computed(() => AppState.sprint),
+    }
+  }
 }
 </script>
 
@@ -39,6 +65,9 @@ export default {
   background: -webkit-linear-gradient(#f7b9ff, #844586);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.sideTabBtns {
+  transform: translateX(-25px);
 }
 .pnText {
   font-weight: 500;
