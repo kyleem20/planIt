@@ -8,8 +8,6 @@ export class ProjectsController extends BaseController {
     this.router
       .get('', this.getAll)
       .get('/:id', this.getById)
-    // .get(':id/sprints', this.getBySprintId)
-    // .put()
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .put('/:id', this.edit)
