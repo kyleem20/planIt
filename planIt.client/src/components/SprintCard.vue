@@ -13,14 +13,33 @@
         <h5 class="sprintInfoText">SPRINT # AND NAME</h5>
         <p>
           [WEIGHT]
-          <img src="https://i.imgur.com/uxtQLDX.png" class="weight" />
+          <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
         </p>
         <button class="btn createTaskBtn border-primary addSprintBtn mb-4">
           Add Task
         </button>
+        <p>0/0 Tasks Complete</p>
+      </div>
+      <div class="card-body d-flex justify-content-between">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              name=""
+              id=""
+              value="checkedValue"
+              checked
+            />
+            TASK
+          </label>
+        </div>
+        <p>
+          [WEIGHT]
+          <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
+        </p>
       </div>
     </div>
-    <div class="card-body"></div>
   </div>
 </template>
 
