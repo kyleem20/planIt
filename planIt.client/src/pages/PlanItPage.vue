@@ -23,6 +23,8 @@
     <div class="col-4 mx-3 d-flex align-items-end justify-content-center">
       <button
         class="btn btn-primary createSprintBtn border-primary addSprintBtn mb-4"
+        data-bs-toggle="modal"
+        data-bs-target="#sprint-modal"
       >
         <img src="https://i.imgur.com/nWwcfAc.png" class="addSprintPlanet" />
         Add Sprint
@@ -33,8 +35,25 @@
 </template>
 
 <script>
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
+import { computed, onMounted } from "@vue/runtime-core";
+import { AppState } from "../AppState";
 export default {
-  name: 'AboutPage'
+  name: 'PlanItPage',
+  setup() {
+    onMounted(async () => {
+      try {
+
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, "Error on the PlanIt Page")
+      }
+    });
+    return {
+      sprint: computed(() => AppState.sprint),
+    }
+  }
 }
 </script>
 

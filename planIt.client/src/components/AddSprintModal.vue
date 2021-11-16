@@ -1,37 +1,25 @@
 <template>
-  <Modal id="post-modal">
+  <Modal id="sprint-modal">
     <template #modal-title>
-      <h4>Make A New Post</h4>
+      <h4>Add Sprint</h4>
     </template>
     <template #modal-body>
       <form @submit.prevent="handleSubmit">
         <div class="justify-content-around">
           <div>
-            <label for="body" class="form-label"> Body</label>
+            <label for="body" class="form-label"> Name</label>
             <textarea
               type="text"
               class="form-control"
               name="body"
               id="body"
-              placeholder="Body"
+              placeholder="Name"
               min="10"
-              max="5000"
+              max="100"
               required
-              v-model="post.body"
+              v-model="sprint.body"
             >
             </textarea>
-          </div>
-          <div>
-            <label for="image" class="form-label"> Image URL</label>
-            <input
-              type="text"
-              class="form-control"
-              name="image"
-              id="image"
-              placeholder="Image"
-              required
-              v-model="post.imgUrl"
-            />
           </div>
         </div>
         <div class="modal-footer">
@@ -48,3 +36,38 @@
     </template>
   </Modal>
 </template>
+
+<script>
+import { logger } from "../utils/Logger";
+import Pop from "../utils/Pop";
+import { ref } from "@vue/reactivity";
+import { useRouter } from "vue-router";
+import { Modal } from "bootstrap";
+
+export default {
+  setup() {
+    const router = useRouter;
+    const sprint = ref();
+
+    return {
+      sprint,
+      async handleSubmit() {
+        try {
+          await sprintService.create(sprint.value)
+          Modal.getOrCreateInstance(
+            document.getElementById("sprint-modal")
+          ).show();
+          router.push({
+            name: "PlanIt"
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, "Error in the Sprint Modal")
+        }
+      }
+    }
+  }
+}
+
+
+</script>
