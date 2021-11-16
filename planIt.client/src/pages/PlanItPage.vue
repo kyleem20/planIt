@@ -1,11 +1,6 @@
 <template>
   <Navbar />
-  <div class="row m-0">
-    <div class="addSprintBtn col-11 mx-3" align="right">
-      <button class="btn createSprintBtn border-primary">Add Sprint</button>
-    </div>
-  </div>
-  <div class="row m-0 sprintInfoRow">
+  <div class="row m-0 sprintInfoRow justify-content-between">
     <div class="col-1 pt-4">Side tabs</div>
     <div class="col-6 pt-4">
       <h1 class="pnText">PROJECT NAME</h1>
@@ -18,8 +13,16 @@
         </p>
       </span>
     </div>
-    <div class="col-1"></div>
+    <div class="col-4 mx-3 d-flex align-items-end justify-content-center">
+      <button
+        class="btn btn-primary createSprintBtn border-primary addSprintBtn mb-4"
+      >
+        <img src="https://i.imgur.com/Igkic40.png" class="addSprintPlanet" />
+        Add Sprint
+      </button>
+    </div>
   </div>
+  <SprintCard />
 </template>
 
 <script>
@@ -38,16 +41,27 @@ export default {
   -webkit-text-fill-color: transparent;
 }
 .pnText {
-  font-weight: 600;
+  font-weight: 500;
+  font-family: "Lucida Sans", "Lucida Sans Regular", Verdana;
 }
 .addSprintBtn {
-  transform: translateY(150px);
+  // transform: translateY(150px);
 }
 .createSprintBtn {
   width: 12rem;
   height: 3rem;
+  line-height: 1;
+  font-size: 1.25rem;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#f7b9ff, #844586);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
+
 .sprintInfoRow {
-  transform: translateY(-50px);
+  // transform: translateY(-50px);
+}
+.addSprintPlanet {
+  height: 2rem;
 }
 </style>
