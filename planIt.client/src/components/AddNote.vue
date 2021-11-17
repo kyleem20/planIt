@@ -17,9 +17,6 @@
       <button class="btn btn-primary">Submit</button>
     </div>
   </form>
-  <div class="row">
-    <div class="row-10"></div>
-  </div>
 </template>
 
 
