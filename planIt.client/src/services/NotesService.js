@@ -4,23 +4,39 @@ const { api } = require("./AxiosService");
 
 
 class NotesService {
-  async create(data)
-{
-  const res = await api.note('api/notes', data)
-  AppState.notes = res.data.notes 
-}
 
-async edit(notes){
-  const res = await api.put('api/notes', + notes.id, notes)
-  logger.log(res.data)
-  const updatedNote = new Notes(res.data)
-  AppState.activeNote = updatedNote
-  const index = AppState.notes.findIndex(n => n.id === updatedNote.id)
-  if (index === -1){
-  AppState.notes.push(updatedNote)
-  return
+  async getAll(id) {
+    const res = await api.get('api/projects' + id)
+    AppState.notes = res.data
   }
-  AppState.project.splice(index, 1, updatedNote)
-}}
 
+  async create(id) {
+    const res = await api.post('api/projects/' + id + '/notes', id)
+    AppState.notes = res.data
+  }
+
+  async getNoteId(id) {
+    const res = await api.get('api/projects/' + id + '/notes')
+    AppState.notes = res.data
+  } 
+
+  async remove(id){
+    const res = await api.delete('api/projects/' + id + '/notes')
+    AppState.notes.filter(p => p.id !== id)
+    AppState.notes = AppState.notes
+  }
+  
+  // async edit(notes){
+  //   const res = await api.put('api/notes', + notes.id, notes)
+  //   logger.log(res.data)
+  //   const updatedNote = new Notes(res.data)
+  //   AppState.activeNote = updatedNote
+  //   const index = AppState.notes.findIndex(n => n.id === updatedNote.id)
+  //   if (index === -1){
+  //   AppState.notes.push(updatedNote)
+  //   return
+  //   }
+  //   AppState.project.splice(index, 1, updatedNote)
+  // }
+}
 export const notesService = new NotesService()
