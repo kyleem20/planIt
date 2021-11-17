@@ -7,8 +7,8 @@ class SprintsService {
     logger.log('sprint service is here')
   }
 
-  async getAll(query = {}) {
-    return await dbContext.Sprints.find(query).populate('creator', 'name')
+  async getAll(projectId) {
+    return await dbContext.Sprints.find({ projectId: projectId }).populate('creator', 'name')
   }
 
   async getById(id) {

@@ -7,8 +7,8 @@ class TasksService {
     logger.log('task service is here')
   }
 
-  async getAll(query = {}) {
-    return await dbContext.Tasks.find(query).populate('creator', 'name')
+  async getAll(projectId) {
+    return await dbContext.Tasks.find({ projectId: projectId }).populate('creator', 'name')
   }
 
   async getById(id) {
@@ -21,8 +21,7 @@ class TasksService {
 
   async create(body) {
     const newTask = await dbContext.Tasks.create(body)
-    return newTask
-    // return newTask.populate('creator', 'name')
+    return newTask.populate('creator', 'name')
   }
 
   async remove(taskId, userId) {
@@ -33,13 +32,13 @@ class TasksService {
     await dbContext.Tasks.findByIdAndDelete(taskId)
   }
 
-  async edit(body) {
-    const task = await this.getById(body.id)
-    if (task.creatorId.toString() !== body.creatorId) {
+  async edit(update) {
+    const task = await this.getById(update.id)
+    if (task.creatorId.toString() !== update.creatorId) {
       throw new Forbidden('You are not aloud to edit this task')
     }
-    const updateTask = dbContext.Tasks.findOneAndUpdate({ _id: body.id }, body, { new: true })
-    return await updateTask
+    const updateTask = await dbContext.Tasks.findOneAndUpdate({ _id: update.id }, update, { new: true })
+    return updateTask
   }
 }
 
