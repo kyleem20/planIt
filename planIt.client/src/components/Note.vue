@@ -1,6 +1,7 @@
 <template>
   <div class="col-11 notesStyling m-3">
     <div class="card p-2">
+      <!-- Profile photo & name -->
       <!-- NOTE Placeholder text for notes -->
       <!-- {{note.body}} -->
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum alias
