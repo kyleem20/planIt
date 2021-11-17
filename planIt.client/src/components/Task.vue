@@ -52,12 +52,20 @@
                 >
                   Pending
                 </p>
+                <p
+                  class="rounded-pill progressPill text-light text-center"
+                  align="middle"
+                >
+                  In Progress
+                </p>
                 <p class="rounded-pill completedPill">Done</p>
               </div>
             </div>
             <div class="row">
-              <div class="col-12">Notes</div>
+              <div class="col-12 text-center notesText">Notes</div>
             </div>
+            <hr />
+            <Notes />
           </div>
         </div>
       </div>
@@ -89,6 +97,12 @@ export default {
   height: 2rem;
   width: 6rem;
   font-family: "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#aec6ee, #013571);
+}
+.progressPill {
+  height: 2rem;
+  width: 6rem;
+  font-family: "Arial Narrow Bold", sans-serif;
   background: -webkit-linear-gradient(#f7b9ff, #844586);
 }
 .incompletedPill {
@@ -96,5 +110,13 @@ export default {
   width: 5rem;
   font-family: "Arial Narrow Bold", sans-serif;
   border: 2px #949494;
+}
+.notesText {
+  line-height: 1;
+  font-size: 1.25rem;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#013571, #aec6ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 </style>
