@@ -3,9 +3,29 @@ import { api } from "./AxiosService";
 
 
 class TaskService {
-  async create(data){
-    const res = await api.task('api/task', data)
-    AppState.task = res.data.task 
+   async getAll(id){
+     const res = await api.get('api/projects/' + id + '/tasks')
+     AppState.tasks = res.data 
+   }
+   async getTaskId(id){
+     const res = await api.get('api/projects/' + id + '/tasks/' + id)
+   }
+  async create(id){
+    const res = await api.post('api/projects/' + id + '/tasks', id)
+    AppState.tasks.unshift(res.data)
+  }
+  async edit(id){
+    const res = await api.put('api/projects/' + id + '/tasks/', id)
+    AppState.tasks = res.data
+    const index = AppState.tasks.findIndex(c=> c.id === AppState.tasks.id)
+    if (index === -1) {
+      AppState.tasks.push(AppState.tasks)
+      return 
+    }
+    AppState.tasks.splice(index, 1, AppState.tasks)
+  }
+  async remove(id){
+    const res = await api.delete('api/projects/' + id + '/tasks/', id)
   }
 }
 
