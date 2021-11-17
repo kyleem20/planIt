@@ -10,9 +10,12 @@
           value="checkedValue"
           unchecked
         />
-        <h6><b>TASK NAME</b></h6>
+        <!--TODO {{task.name}} -->
+        <h6>
+          <b>TASK NAME</b>
+        </h6>
       </label>
-      <p>Created - DATE | Completed - DATE</p>
+      <!-- <p> Created - DATE | Completed - DATE</p> -->
       <button
         class="btn"
         data-bs-toggle="offcanvas"
@@ -22,7 +25,6 @@
       >
         0 <img class="commentImg" src="https://i.imgur.com/rlHQekg.png" />
       </button>
-
       <div
         class="offcanvas offcanvas-end"
         tabindex="-1"
@@ -33,6 +35,7 @@
           <h5 class="offcanvas-title" id="notesOffCanvasLabel">
             SPRINT NAME > TASK NAME
           </h5>
+          <!--  TODO {{sprint.name}} > {{task.name}} -->
           <button
             type="button"
             class="btn-close text-reset"
@@ -58,6 +61,7 @@
                 >
                   In Progress
                 </p>
+                <!-- TODO v-if here -->
                 <p class="rounded-pill completedPill">Done</p>
               </div>
             </div>
