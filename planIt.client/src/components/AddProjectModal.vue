@@ -24,7 +24,9 @@
       >
         Close
       </button>
+      <!-- <router-link :to="{ name: 'PlanIt' }"> -->
       <button type="submit" class="btn btn-success">Submit</button>
+      <!-- </router-link> -->
     </div>
   </form>
 </template>
