@@ -1,14 +1,12 @@
 <template>
   <div class="row">
     <div>
-      <div class="homeCard col-10">
+      <div class="homeCard col-12">
         <div class="card p-3 bg-white rounded elevation-3 mt-5">
           <div class="card-body">
             <div class="row justify-content-between">
-              <div class="col-5" align="left">
-                <HPProjects />
-              </div>
-              <div class="col-5 mx-3" align="right">
+              
+              <div class="col-2 mx-3" align="right">
                 <button
                   class="btn createProjectBtn border-primary"
                   data-bs-toggle="modal"
@@ -23,21 +21,11 @@
                   </template>
                 </Modal>
               </div>
+              <div class="col-10" align="left">
+                <HPProjects />
+              </div>
             </div>
           </div>
-          <div class="row px-3">
-            <div class="col-4">
-              <p class="subHeadText text-info">NAME</p>
-            </div>
-            <div class="col-4">
-              <p class="subHeadText text-info">MEMBERS</p>
-            </div>
-            <div class="col-4">
-              <p class="subHeadText text-info">STARTED</p>
-            </div>
-            <hr />
-          </div>
-          <HPProjects />
         </div>
       </div>
     </div>

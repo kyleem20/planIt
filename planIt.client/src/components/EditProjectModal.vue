@@ -53,7 +53,7 @@ import { projectsService } from "../services/ProjectsService"
 export default {
   setup(props) {
     const router = useRouter()
-    const editable = ref({})
+    const editable = ref()
     // watchEffect(() => {
     //   editable.value = { ...props.project }
     // })

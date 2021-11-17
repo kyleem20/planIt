@@ -6,14 +6,16 @@
 
 
 <script>
+import { computed, onMounted } from '@vue/runtime-core';
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState';
 import Projects from '../components/Projects.vue';
 import { projectsService } from '../services/ProjectsService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
+
 export default {
-  components: { Projects },
+  components: { ProjectsPage },
     name: "Project",
     setup(){
         const route = useRoute();

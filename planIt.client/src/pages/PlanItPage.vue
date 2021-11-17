@@ -19,7 +19,7 @@
         <img src="https://i.imgur.com/az1CuDs.png" />
       </button>
       <Modal id="projectEdit-modal">
-        <template #modal-title> Edit Project </template>
+        <template #modal-title> Edit PROFILE </template>
         <template #modal-body>
           <EditProjectModal />
         </template>
@@ -77,21 +77,28 @@ import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { computed, onMounted } from "@vue/runtime-core";
 import { AppState } from "../AppState";
+import { projectsService } from '../services/ProjectsService';
+import { useRoute } from 'vue-router';
+import Projects from '../components/Projects.vue';
+
 
 export default {
-  name: 'PlanItPage',
+   components: { ProjectsPage },
+  name: 'Project',
   setup() {
-
+    const route = useRoute()
     onMounted(async () => {
       try {
+        await projectsService.getAll(route.params.id);
+        await projectsService.getProjectsById(route.params.id)
 
       } catch (error) {
         logger.error(error)
-        Pop.toast(error.message, "Error on the PlanIt Page")
+        Pop.toast(error.message, "Error on the Project Page")
       }
     });
     return {
-      sprint: computed(() => AppState.sprint),
+      project: computed(() => AppState.projects),
     }
   }
 }
