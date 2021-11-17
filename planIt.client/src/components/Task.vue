@@ -65,7 +65,7 @@
               <div class="col-12 text-center notesText">Notes</div>
             </div>
             <hr />
-            <Notes />
+            <AddNote />
           </div>
         </div>
       </div>
