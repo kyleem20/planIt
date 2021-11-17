@@ -1,11 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <div class="justify-content-around d-flex">
+    <div>
       <div>
-        <label for="name" class="form-label"> Project Name</label>
+        <label for="name" class="form-label d-flex">Project Name</label>
         <input
+          class="form-control mb-3 justify-content-around d-flex"
           type="text"
-          class="form-control mb-3"
           name="name"
           id="name"
           placeholder="Name"
