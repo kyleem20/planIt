@@ -11,15 +11,15 @@
       >
         <img src="https://i.imgur.com/395nkyu.png" />
       </button>
-      <button
-        class="btn ps-0"
-        data-bs-toggle="offcanvas"
-        href="#editOffCanvas"
-        rolw="button"
-        aria-controls="editOffCanvas"
-      >
+      <button class="btn ps-0">
         <img src="https://i.imgur.com/wN5zZ7n.png" />
       </button>
+      <Modal id="projectEdit-modal">
+        <template #modal-title> Edit Project </template>
+        <template #modal-body>
+          <EditProjectModal />
+        </template>
+      </Modal>
 
       <div
         class="offcanvas offcanvas-start"
