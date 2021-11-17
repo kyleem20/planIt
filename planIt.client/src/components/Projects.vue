@@ -1,11 +1,20 @@
 <template>
   <div class="row px-3">
-    <div class="col-10">
-      <div class="card m-2 p-2" v-for="p in projects" :key="p.id" >
+    <div class="col-12">
+      <div class="card m-2 p-3" v-for="p in projects" :key="p.id" >
       <h1 class="pnText">{{ p.name }}</h1>
       <p>{{ p.description }}</p>
+      <div class="row">
+        <div class="col-12">
+        <Sprint />
+
+        </div>
+      </div>
+      <span class="m-4">
+      </span>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -33,6 +42,7 @@ export default {
           Pop.toast("Issue creating project", "error")
         }
       },
+      
       async remove(id) {
         try {
           await projectsService.remove(id)

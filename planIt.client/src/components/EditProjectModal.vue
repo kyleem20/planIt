@@ -49,7 +49,7 @@ import { AppState } from "../AppState"
 import { Modal } from "bootstrap"
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
-import { projectService } from "../services/ProjectService"
+import { projectsService } from "../services/ProjectsService"
 export default {
   setup(props) {
     const router = useRouter()
@@ -62,9 +62,9 @@ export default {
       async handleSubmit() {
         try {
           if (editable.value.id) {
-            await projectService.edit(editable.value)
+            await projectsService.edit(editable.value)
           } else {
-            await projectService.create(editable.value)
+            await projectsService.create(editable.value)
           }
           Modal.getOrCreateInstance(document.getElementById('project-modal')).hide()
           router.push({ name: 'Project', params: { id: AppState.activeProject.id } })

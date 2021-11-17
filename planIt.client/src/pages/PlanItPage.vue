@@ -48,8 +48,8 @@
         </div>
       </div>
     </div>
-    <div class="col-10 pt-4">
-      <HPProjects />
+    <div class="col-11 pt-4 px-2">
+      <Projects />
     </div>
     <!-- TODO Insert Sprints on HPProjects -->
     <!-- <div class="col-4 mx-3 d-flex align-items-end justify-content-center">

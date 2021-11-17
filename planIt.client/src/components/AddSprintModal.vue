@@ -35,7 +35,7 @@ import Pop from "../utils/Pop";
 import { ref } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import { Modal } from "bootstrap";
-import { sprintService } from "../services/SprintService"
+import { sprintsService } from "../services/SprintsService"
 
 export default {
   setup() {
@@ -46,7 +46,7 @@ export default {
       sprint,
       async handleSubmit() {
         try {
-          await sprintService.create(sprint.value)
+          await sprintsService.create(sprint.value)
           Modal.getOrCreateInstance(
             document.getElementById("sprint-modal")
           ).show();
