@@ -4,17 +4,8 @@
       <div class="card m-2 p-2" v-for="p in projects" :key="p.id" >
       <h1 class="pnText">{{ p.name }}</h1>
       <p>{{ p.description }}</p>
-      <div class="row">
-        <div class="col-12">
-        <SprintCard />
-
-        </div>
-      </div>
-      <span class="m-4">
-      </span>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -23,7 +14,7 @@
 import { computed } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
-import { projectService } from '../services/ProjectService'
+import { projectsService } from '../services/ProjectsService'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 
@@ -36,7 +27,7 @@ export default {
       // account: computed(()=> AppState.account),
       async create() {
         try {
-          await projectService.create()
+          await projectsService.create()
         } catch (error) {
           logger.log(error)
           Pop.toast("Issue creating project", "error")
@@ -44,7 +35,7 @@ export default {
       },
       async remove(id) {
         try {
-          await projectService.remove(id)
+          await projectsService.remove(id)
         } catch (error) {
           logger.log(error)
           Pop.toast("issue deleting project", "error")

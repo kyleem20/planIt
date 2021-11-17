@@ -1,6 +1,6 @@
 <template>
   <div class="row m-0 justify-content-center">
-    <div class="col-9 card border-info elevation-3">
+    <div class="col-11 card border-info elevation-3">
               <h5 class="sprintsText">Sprints</h5>
         <p>
           Group your tasks into sprints for over-arching collections for better
@@ -68,9 +68,35 @@
 
 
 <script>
+import { computed } from '@vue/reactivity'
+import { useRouter } from 'vue-router'
+import { sprintsService } from '../services/SprintsService'
+
 export default {
-  setup() {
-    return {}
+setup() {
+    const router = useRouter()
+    return {
+      sprints: computed(()=> AppState.sprints),
+      // account: computed(()=> AppState.account),
+      async create() {
+        try {
+          await sprintsService.create()
+        } catch (error) {
+          logger.log(error)
+          Pop.toast("Issue creating sprint", "error")
+        }
+      },
+      async remove(id) {
+        try {
+          await sprintsService.remove(id)
+        } catch (error) {
+          logger.log(error)
+          Pop.toast("issue deleting sprint", "error")
+        }
+      },
+      // TODO link profile in profile service
+
+    }
   }
 }
 </script>

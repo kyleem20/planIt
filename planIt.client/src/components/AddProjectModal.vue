@@ -34,7 +34,7 @@
 <script>
 import { ref } from "@vue/reactivity";
 import { useRouter } from "vue-router";
-import { projectService } from "../services/ProjectService";
+import { projectsService } from "../services/ProjectsService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 
@@ -46,7 +46,7 @@ export default {
     return {
       async handleSubmit() {
         try {
-          await projectService.create(project.value)
+          await projectsService.create(project.value)
           Modal.getOrCreateInstance(
             document.getElementById("addProject-modal")
           ).show();
