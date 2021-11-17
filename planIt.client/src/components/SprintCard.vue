@@ -26,10 +26,18 @@
         </p>
         <button
           class="btn createTaskBtn border-primary addSprintBtn mb-4"
-          @click.stop=""
+          data-bs-toggle="modal"
+          data-bs-target="#addTask-modal"
         >
           Add Task
         </button>
+        <Modal id="addTask-modal">
+          <template #modal-title> Add Task </template>
+          <template #modal-body>
+            <AddTask />
+          </template>
+        </Modal>
+
         <p><b>0/0 Tasks Complete</b></p>
       </div>
       <div class="collapse mb-3" id="sprintDrawer">

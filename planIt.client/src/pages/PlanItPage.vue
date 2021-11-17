@@ -11,8 +11,12 @@
       >
         <img src="https://i.imgur.com/395nkyu.png" />
       </button>
-      <button class="btn ps-0">
-        <img src="https://i.imgur.com/wN5zZ7n.png" />
+      <button
+        class="btn ps-0"
+        data-bs-toggle="modal"
+        data-bs-target="#projectEdit-modal"
+      >
+        <img src="https://i.imgur.com/az1CuDs.png" />
       </button>
       <Modal id="projectEdit-modal">
         <template #modal-title> Edit Project </template>
@@ -80,7 +84,7 @@ import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { computed, onMounted } from "@vue/runtime-core";
 import { AppState } from "../AppState";
-import AddSprintModal from "../components/AddSprintModal.vue";
+
 export default {
   name: 'PlanItPage',
   setup() {

@@ -4,6 +4,10 @@ import { api } from "./AxiosService";
 
 
 class ProjectService {
+  async create(data){
+    const res = await api.project('api/project', data)
+    AppState.project = res.data.project
+  }
   async edit(project){
     const res = await api.put('api/project', + project.id, project)
     logger.log(res.data)

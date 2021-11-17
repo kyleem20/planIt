@@ -10,9 +10,19 @@
                 <p>A list of all the projects for [USER NAME]</p>
               </div>
               <div class="col-5 mx-3" align="right">
-                <button class="btn createProjectBtn border-primary">
+                <button
+                  class="btn createProjectBtn border-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#addProject-modal"
+                >
                   Create Project
                 </button>
+                <Modal id="addProject-modal">
+                  <template #modal-title> Add Project </template>
+                  <template #modal-body>
+                    <AddProjectModal />
+                  </template>
+                </Modal>
               </div>
             </div>
           </div>
@@ -37,9 +47,24 @@
 
 
 <script>
+import { computed, onMounted } from "@vue/runtime-core"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
+import { AppState } from "../AppState"
+
 export default {
   setup() {
-    return {}
+    onMounted(async () => {
+      try {
+
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, "Error on the Home Page")
+      }
+    })
+    return {
+      project: computed(() => AppState.project),
+    }
   }
 }
 </script>

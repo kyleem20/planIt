@@ -14,19 +14,19 @@
           required
         />
       </div>
-      <textarea>
-        <label for="name" class="form-label"> Description</label>
-        <input
+      <div>
+        <label for="description" class="form-label"> Description</label>
+        <textarea
           type="text"
           class="form-control"
           name="description"
-          id="name"
+          id="description"
           placeholder="description"
           min="10"
           max="250"
           required
         />
-      </textarea>
+      </div>
       <!-- TODO v-model="project.name" && inject project info-->
     </div>
     <div class="modal-footer">
