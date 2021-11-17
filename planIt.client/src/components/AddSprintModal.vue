@@ -1,40 +1,32 @@
 <template>
-  <Modal id="sprint-modal">
-    <template #modal-title>
-      <h4>Add Sprint</h4>
-    </template>
-    <template #modal-body>
-      <form @submit.prevent="handleSubmit">
-        <div class="justify-content-around">
-          <div>
-            <label for="body" class="form-label"> Name</label>
-            <textarea
-              type="text"
-              class="form-control"
-              name="body"
-              id="body"
-              placeholder="Name"
-              min="10"
-              max="100"
-              required
-              v-model="sprint.body"
-            >
-            </textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary text-light"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
-          <button type="submit" class="btn btn-success">Submit</button>
-        </div>
-      </form>
-    </template>
-  </Modal>
+  <form @submit.prevent="handleSubmit">
+    <div class="justify-content-around">
+      <div>
+        <label for="name" class="form-label"> Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="name"
+          placeholder="Name"
+          min="10"
+          max="100"
+          required
+        />
+      </div>
+      <!-- TODO v-model="sprint.name" -->
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-secondary text-light"
+        data-bs-dismiss="modal"
+      >
+        Close
+      </button>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -43,10 +35,11 @@ import Pop from "../utils/Pop";
 import { ref } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import { Modal } from "bootstrap";
+import { sprintService } from "../services/SprintService"
 
 export default {
   setup() {
-    const router = useRouter;
+    const router = useRouter();
     const sprint = ref();
 
     return {

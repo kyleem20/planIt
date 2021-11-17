@@ -8,20 +8,26 @@
           d-flex
           justify-content-between
           align-items-center
-          btn
         "
-        data-bs-toggle="collapse"
-        href="#sprintDrawer"
-        role="button"
-        aria-expanded="false"
-        aria-controls="collapseExample"
       >
-        <h5 class="sprintInfoText">SPRINT # AND NAME</h5>
+        <h5
+          class="sprintInfoText btn"
+          data-bs-toggle="collapse"
+          href="#sprintDrawer"
+          role="button"
+          aria-expanded="false"
+          aria-controls="collapseExample"
+        >
+          SPRINT # AND NAME
+        </h5>
         <p>
           [WEIGHT]
           <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
         </p>
-        <button class="btn createTaskBtn border-primary addSprintBtn mb-4">
+        <button
+          class="btn createTaskBtn border-primary addSprintBtn mb-4"
+          @click.stop=""
+        >
           Add Task
         </button>
         <p><b>0/0 Tasks Complete</b></p>

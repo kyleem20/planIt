@@ -1,13 +1,48 @@
 <template>
   <Navbar />
   <div class="row m-0 sprintInfoRow justify-content-between">
-    <div class="col-1 sideTabBtns pt-4">
-      <button class="btn">
+    <div class="col-1 sideTabBtns pt-4 ps-0">
+      <button
+        class="btn ps-0"
+        data-bs-toggle="offcanvas"
+        href="#projectOffCanvas"
+        rolw="button"
+        aria-controls="projectOffCanvas"
+      >
         <img src="https://i.imgur.com/395nkyu.png" />
       </button>
-      <button class="btn">
+      <button
+        class="btn ps-0"
+        data-bs-toggle="offcanvas"
+        href="#editOffCanvas"
+        rolw="button"
+        aria-controls="editOffCanvas"
+      >
         <img src="https://i.imgur.com/wN5zZ7n.png" />
       </button>
+
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="projectOffCanvas"
+        aria-labelledby="projectOffCanvasLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="projectOffCanvasLabel"></h5>
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="col-10" align="left">
+            <p class="projectsText">Projects</p>
+            <p>A list of all the projects for [USER NAME]</p>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-6 pt-4">
       <h1 class="pnText">PROJECT NAME</h1>
@@ -29,6 +64,12 @@
         <img src="https://i.imgur.com/nWwcfAc.png" class="addSprintPlanet" />
         Add Sprint
       </button>
+      <Modal id="sprint-modal">
+        <template #modal-title> Add Sprint </template>
+        <template #modal-body>
+          <AddSprintModal />
+        </template>
+      </Modal>
     </div>
     <SprintCard class="mb-3" />
   </div>
@@ -39,9 +80,11 @@ import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { computed, onMounted } from "@vue/runtime-core";
 import { AppState } from "../AppState";
+import AddSprintModal from "../components/AddSprintModal.vue";
 export default {
   name: 'PlanItPage',
   setup() {
+
     onMounted(async () => {
       try {
 
@@ -66,15 +109,20 @@ export default {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.sideTabBtns {
-  transform: translateX(-25px);
-}
 .pnText {
   font-weight: 500;
   font-family: "Lucida Sans", "Lucida Sans Regular", Verdana;
 }
 .addSprintBtn {
   // transform: translateY(150px);
+}
+.projectsText {
+  line-height: 1;
+  font-size: 1.5rem;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#f7b9ff, #844586);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .createSprintBtn {
   width: 12rem;
