@@ -2,6 +2,7 @@
   <div class="col-11 notesStyling m-3">
     <div class="card p-2">
       <!-- NOTE Placeholder text for notes -->
+      <!-- {{note.body}} -->
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum alias
       excepturi vitae similique modi ut nesciunt.
     </div>
