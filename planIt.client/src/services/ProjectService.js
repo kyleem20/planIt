@@ -4,22 +4,22 @@ import { api } from "./AxiosService";
 
 
 class ProjectService {
+  
+  async getAll(){
+    const res = await api.get('api/projects/')
+    AppState.projects = res.data
+  } 
   async create(data){
-    const res = await api.project('api/project', data)
-    AppState.project = res.data.project
+    const res = await api.project('api/projects/', data)
+    AppState.projects.unshift(res.data)
   }
-  async edit(project){
-    const res = await api.put('api/project', + project.id, project)
+  async remove(id){
+    const res = await api.delete('api/projects/'+ id)
     logger.log(res.data)
-    const updatedProject = new Project(res.data)
-    AppState.activeProject = updatedProject
-    const index = AppState.project.findIndex(p => p.id === updatedProject.id)
-    if (index === -1) {
-      AppState.project.push(updatedCar)
-      return
-    }
-    AppState.project.splice(index, 1, updatedProject)
-}
+    AppState.projects.filter(p => p.id !== id)
+    AppState.projects = AppState.project
+  }
+
 }
 
 export const projectService = new ProjectService()

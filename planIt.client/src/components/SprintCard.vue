@@ -1,6 +1,12 @@
 <template>
   <div class="row m-0 justify-content-center">
     <div class="col-9 card border-info elevation-3">
+              <h5 class="sprintsText">Sprints</h5>
+        <p>
+          Group your tasks into sprints for over-arching collections for better
+          organization.
+        </p>
+      
       <div
         class="
           card-header

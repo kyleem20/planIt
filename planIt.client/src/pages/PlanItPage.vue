@@ -48,18 +48,11 @@
         </div>
       </div>
     </div>
-    <div class="col-6 pt-4">
-      <h1 class="pnText">PROJECT NAME</h1>
-      <p>Project subtitle / brief description</p>
-      <span class="m-4">
-        <h5 class="sprintsText">Sprints</h5>
-        <p>
-          Group your tasks into sprints for over-arching collections for better
-          organization.
-        </p>
-      </span>
+    <div class="col-10 pt-4">
+      <HPProjects />
     </div>
-    <div class="col-4 mx-3 d-flex align-items-end justify-content-center">
+    <!-- TODO Insert Sprints on HPProjects -->
+    <!-- <div class="col-4 mx-3 d-flex align-items-end justify-content-center">
       <button
         class="btn btn-primary createSprintBtn border-primary addSprintBtn mb-4"
         data-bs-toggle="modal"
@@ -75,7 +68,7 @@
         </template>
       </Modal>
     </div>
-    <SprintCard class="mb-3" />
+    <SprintCard class="mb-3" /> -->
   </div>
 </template>
 

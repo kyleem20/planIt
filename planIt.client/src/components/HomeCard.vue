@@ -1,13 +1,12 @@
 <template>
   <div class="row">
-    <center>
+    <div>
       <div class="homeCard col-10">
         <div class="card p-3 bg-white rounded elevation-3 mt-5">
           <div class="card-body">
             <div class="row justify-content-between">
               <div class="col-5" align="left">
-                <p class="projectsText">Projects</p>
-                <p>A list of all the projects for [USER NAME]</p>
+                <HPProjects />
               </div>
               <div class="col-5 mx-3" align="right">
                 <button
@@ -38,10 +37,10 @@
             </div>
             <hr />
           </div>
-          <HPProject />
+          <HPProjects />
         </div>
       </div>
-    </center>
+    </div>
   </div>
 </template>
 

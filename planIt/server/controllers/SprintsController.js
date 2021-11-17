@@ -6,15 +6,16 @@ export class SprintsController extends BaseController {
   constructor() {
     super('api/projects/:projectId/sprints')
     this.router
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .delete('/:id', this.remove)
   }
 
   async getAll(req, res, next) {
     try {
+      req.query.creatorId = req.userInfo.id
       const sprints = await sprintsService.getAll(req.params.projectId)
       return res.send(sprints)
     } catch (error) {

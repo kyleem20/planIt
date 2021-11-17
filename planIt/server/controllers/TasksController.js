@@ -6,9 +6,9 @@ export class TasksController extends BaseController {
   constructor() {
     super('api/projects/:projectId/tasks')
     this.router
+      .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
-      .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.remove)
@@ -16,6 +16,7 @@ export class TasksController extends BaseController {
 
   async getAll(req, res, next) {
     try {
+      req.query.creatorId = req.userInfo.id
       const tasks = await tasksService.getAll(req.params.projectId)
       return res.send(tasks)
     } catch (error) {
