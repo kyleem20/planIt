@@ -66,6 +66,9 @@
             </div>
             <hr />
             <AddNote />
+            <div>
+              <Note />
+            </div>
           </div>
         </div>
       </div>
