@@ -13,7 +13,7 @@
       max="250"
       required
     />
-    <div class="text-end">
+    <div class="text-end mt-2">
       <button class="btn btn-primary">Submit</button>
     </div>
   </form>
