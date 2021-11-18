@@ -10,8 +10,8 @@
       <p>{{ s.startDate }}</p>
 
       <div class="card-header bg-transparent d-flex justify-content-between">
-        <h5
-          class="sprintInfoText btn selectable col-3"
+        <button
+          class="sprintInfoText btn col-3"
           data-bs-toggle="collapse"
           href="#sprintDrawer"
           role="button"
@@ -22,7 +22,7 @@
             Total Weight from Tasks
             <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
           </p>
-        </h5>
+        </button>
         <div class="col-3">
           <p><b>0/0 Tasks Complete</b></p>
         </div>
