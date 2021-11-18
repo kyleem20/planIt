@@ -1,7 +1,7 @@
 <template>
   <div class="row m-0 justify-content-center">
     <div
-      class="col-11 card border-info elevation-3 selectable m-2"
+      class="col-11 card border-info elevation-3 m-2"
       v-for="s in sprints"
       :key="s.id"
       :sprint="s"
@@ -9,29 +9,25 @@
       <h5 class="sprintsText">{{ s.name }}</h5>
       <p>{{ s.startDate }}</p>
 
-      <div
-        class="
-          card-header
-          bg-transparent
-          d-flex
-          justify-content-between
-          align-items-center
-        "
-      >
-        <h5
-          class="sprintInfoText btn"
+      <div class="card-header bg-transparent d-flex justify-content-between">
+        <button
+          class="sprintInfoText btn col-3"
           data-bs-toggle="collapse"
           href="#sprintDrawer"
           role="button"
           aria-expanded="false"
-          aria-controls="collapseExample"
-        ></h5>
-        <p>
-          Total Weight from Tasks
-          <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
-        </p>
+          aria-controls="sprintDrawer"
+        >
+          <p>
+            Total Weight from Tasks
+            <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
+          </p>
+        </button>
+        <div class="col-3">
+          <p><b>0/0 Tasks Complete</b></p>
+        </div>
         <button
-          class="btn createTaskBtn border-primary addSprintBtn mb-4"
+          class="btn createTaskBtn border-primary addSprintBtn mb-4 col-3"
           data-bs-toggle="modal"
           data-bs-target="#addTask-modal"
         >
@@ -43,22 +39,20 @@
             <!-- <AddTask /> -->
           </template>
         </Modal>
-
-        <p><b>0/0 Tasks Complete</b></p>
+        <button class="deleteSprint">
+          DELETE SPRINT &nbsp;&nbsp;
+          <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
+        </button>
       </div>
       <div class="collapse mb-3" id="sprintDrawer">
         <div class="row">
           <div
-            class="card-body d-flex justify-content-between collapse"
+            class="col-12 card-body d-flex justify-content-between collapse"
+            align="right"
             data-bs-toggle="collapse"
           >
+            TASKS LIVE HERE
             <!-- <Task /> -->
-            <div class="d-flex align-items-end justify-content-center">
-              <button class="deleteSprint">
-                DELETE SPRINT &nbsp;&nbsp;
-                <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
-              </button>
-            </div>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@
   <div class="row m-0">
     <Navbar />
     <div class="col-12">
-      <div class="row sprintInfoRow justify-content-between">
+      <div class="row sprintInfoRow">
         <div class="col-1 sideTabBtns pt-4 ps-0">
           <!-- NOTE This is the Profile, their projects offcanvas: needs edit profile inside -->
           <!-- Must always display to allow navigation between projects -->
@@ -43,9 +43,9 @@
     </div>
     <!-- NOTE This is where all projects will be displayed -->
     <div class="row">
-      <div class="col-12">
-                <!-- NOTE Can be changed to add new sprint -->
-        <!--<div class="card p-3 bg-white rounded elevation-3 mt-5">
+      <!-- <div class="col-12"> -->
+      <!-- NOTE Can be changed to add new sprint -->
+      <!--<div class="card p-3 bg-white rounded elevation-3 mt-5">
           <div class="card-body">
             <div class="row justify-content-between">
               <div class="col-12 mx-3" align="right">
@@ -63,16 +63,16 @@
                     </template>
                   </Modal>
                 </div> -->
-                <div class="col-10" align="left">
-                  <ActiveProject />
-                <!-- </div>
+      <div class="col-10" align="left">
+        <ActiveProject />
+        <!-- </div>
               </div>
             </div>
           </div> -->
-        </div>
       </div>
     </div>
   </div>
+  <!-- </div> -->
 </template>
 
 
