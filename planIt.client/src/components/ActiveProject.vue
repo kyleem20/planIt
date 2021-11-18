@@ -1,4 +1,4 @@
-<template>
+<template>  
   <div class="col-12">
     <div class="row px-3">
       <div class="col-12" >
@@ -24,7 +24,7 @@
       <span class="m-4"> </span>
  -->
     </div>
-  </div>
+ </div>
 </template>
 
 
@@ -55,21 +55,16 @@ export default {
     })
     return {
       project: computed(() => AppState.activeProject),
+    }
+  }
+}
       // project: computed(() => AppState.projects),
     //   activeProject: computed(() => {
     //     let projects = AppState.activeProject
     //     if (projects.value) {
     //       router.push({ path: '/projects/' + id + '/sprints/'})
     //     }
-    // })
-
-    }
-  }
-}
-
-// export default {
-//   setup() {
-//     return {
+    // })d
 //       spell: computed(() => AppState.activeSpell),
 //       async prepareToggle() {
 //         try {

@@ -1,6 +1,6 @@
 <template>
   <div class="row" align="left">
-    <div class="col-12 d-flex" v-for="t in tasks" :key="t.id" :task="t">
+    <div class="col-12 d-flex" v-for="t in tasks" :key="t.id">
       <div class="form-check">
         <label class="form-check-label ms-3">
           <input
@@ -19,7 +19,7 @@
         <button
           class="btn"
           data-bs-toggle="offcanvas"
-          href="#notesOffCanvas"
+          :href="'#notesOffCanvas-' + t.id"
           rolw="button"
           aria-controls="notesOffCanvas"
         >
@@ -28,7 +28,7 @@
         <div
           class="offcanvas offcanvas-end"
           tabindex="-1"
-          id="notesOffCanvas"
+          :id="'notesOffCanvas-' + t.id"
           aria-labelledby="notesOffCanvasLabel"
         >
           <div class="offcanvas-header">
@@ -69,9 +69,28 @@
                 <div class="col-12 text-center notesText">Notes</div>
               </div>
               <hr />
+              <div class="row">
+                <div class="col-12 mt-2"><b>Add A Note</b></div>
+              </div>
+              <form @submit.prevent="createNote">
+                <textarea
+                  v-model="state.editable.body"
+                  type="text"
+                  class="form-control"
+                  name="note"
+                  id="body"
+                  placeholder="Note"
+                  min="10"
+                  max="250"
+                  required
+                />
+                <div class="text-end mt-2" :v-model="state.editable.taskId">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
               <!-- <AddNote /> -->
               <div>
-                <!-- <Note /> -->
+                <Notes :taskId="t.id" />
               </div>
             </div>
           </div>
@@ -90,36 +109,54 @@
 
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed, reactive } from '@vue/reactivity'
 import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import { onMounted } from '@vue/runtime-core'
-import { sprintsService } from '../services/SprintsService'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
-import { tasksService } from '../services/TasksService'
+import { notesService } from '../services/NotesService'
+import { Modal } from 'bootstrap'
 export default {
+
+
   props: {
     sprintId: { type: String, required: true }
   },
   setup(props) {
+    const state = reactive({
+      editable: {},
+    })
     const route = useRoute()
-    // onMounted(async () => {
-    //   try {
-    //     if (route.params.id) {
-    //       await tasksService.getAll(route.params.id)
-    //     }
-    //   } catch (error) {
-    //     logger.error(error)
-    //     Pop.toast("Issue with active project .vue", 'error')
-    //   }
-    // })
+    onMounted(async () => {
+      try {
+        if (route.params.id) {
+          await notesService.getAll(route.params.id)
+        }
+      } catch (error) {
+        logger.error(error)
+        Pop.toast("Issue with active project .vue", 'error')
+      }
+    })
     return {
+      state,
       sprints: computed(() => AppState.sprints),
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId === props.sprintId)),
+      async createNote() {
+        try {
+          if (route.params.id) {
+            await notesService.create(route.params.id);
+            state.editable = {}
+          }
+        } catch (error) {
+          logger.log(error)
+          Pop.toast("Create is not working", "error");
+        }
+      }
     }
   }
 }
+
 </script>
 
 

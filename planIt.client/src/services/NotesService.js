@@ -1,17 +1,17 @@
-const { AppState } = require("../AppState");
-const { logger } = require("../utils/Logger");
-const { api } = require("./AxiosService");
+import { AppState } from "../AppState";
+import { logger } from "../utils/Logger";
+import { api } from "./AxiosService";
 
 
 class NotesService {
 
   async getAll(id) {
-    const res = await api.get('api/projects/' + id)
+    const res = await api.get(`api/projects/${id}/notes`)
     AppState.notes = res.data
   }
 
   async create(id) {
-    const res = await api.post('api/projects/' + id + '/notes', id)
+    const res = await api.post(`api/projects/${id}/notes`, id)
     AppState.notes.unshift(res.data)
   }
 

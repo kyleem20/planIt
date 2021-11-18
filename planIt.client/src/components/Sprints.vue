@@ -13,7 +13,7 @@
         <button
           class="sprintInfoText btn col-3"
           data-bs-toggle="collapse"
-          href="#sprintDrawer"
+          :href="'#sprintdrawer-'+s.id"
           role="button"
           aria-expanded="false"
           aria-controls="sprintDrawer"
@@ -44,7 +44,7 @@
           <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
         </button>
       </div>
-      <div class="collapse mb-3" id="sprintDrawer">
+      <div class="collapse mb-3" :id="'sprintdrawer-'+s.id">
         <div class="row">
           <div
             class="col-12 card-body d-flex justify-content-between collapse"
@@ -52,7 +52,7 @@
             data-bs-toggle="collapse"
           >
             <div class="row">
-              <Tasks />
+              <Tasks :sprintId="s.id" />
             </div>
           </div>
         </div>
@@ -90,7 +90,8 @@ export default {
     })
     return {
       sprints: computed(() => AppState.sprints),
-      activeProject: computed(() => AppState.activeProject),
+      project: computed(() => AppState.activeProject),
+      tasks: computed(() => AppState.tasks.filter(t => t.sprintId === props.sprintId)),
 
       async getTasksClick(){
        try {
