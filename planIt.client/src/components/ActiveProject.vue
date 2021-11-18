@@ -1,12 +1,10 @@
 <template>
-  <div class="row px-3">
-    <div class="col-12 m-2 p-3" v-if="project.id === activeProject">
-      <h1 class="pnText">{{ project.name }}</h1>
-      <p>{{ project.description }}</p>
-      <span class="m-4"> </span>
-    </div>
-    <Sprints />
+  <div class="col-12 m-2 p-3" v-if="project.id === activeProject">
+    <h1 class="pnText">{{ project.name }}</h1>
+    <p>{{ project.description }}</p>
+    <span class="m-4"> </span>
   </div>
+  <Sprints />
 </template>
 
 
