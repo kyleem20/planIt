@@ -1,22 +1,11 @@
 <template>
-  <div class="col-12">
-    <div class="row px-3">
-      <div class="col-12" v-if="project.id === activeProject">
-        <div class=" m-2 p-3">
-          <h1 class="pnText">{{ project.name }}</h1>
-          <p>{{ project.description }}</p>
-          <span class="m-4"> </span>
-        </div>
-        <div class="card">
-          <div class="row">
-            <div class="col-12">
-              <Sprints />
-            </div>
-          </div>
-          <span class="m-4"> </span>
-        </div>
-      </div>
+  <div class="row px-3">
+    <div class="col-12 m-2 p-3" v-if="project.id === activeProject">
+      <h1 class="pnText">{{ project.name }}</h1>
+      <p>{{ project.description }}</p>
+      <span class="m-4"> </span>
     </div>
+    <Sprints />
   </div>
 </template>
 
@@ -49,12 +38,12 @@ export default {
     return {
       activeProject: computed(() => AppState.activeProject),
       project: computed(() => AppState.projects),
-    //   activeProject: computed(() => {
-    //     let projects = AppState.activeProject
-    //     if (projects.value) {
-    //       router.push({ path: '/projects/' + id + '/sprints/'})
-    //     }
-    // })
+      //   activeProject: computed(() => {
+      //     let projects = AppState.activeProject
+      //     if (projects.value) {
+      //       router.push({ path: '/projects/' + id + '/sprints/'})
+      //     }
+      // })
     }
   }
 }

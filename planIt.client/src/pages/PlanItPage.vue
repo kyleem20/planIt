@@ -11,19 +11,19 @@
       >
         <img src="https://i.imgur.com/395nkyu.png" />
       </button>
-      <button
+      <!-- <button
         class="btn ps-0"
         data-bs-toggle="modal"
         data-bs-target="#projectEdit-modal"
       >
         <img src="https://i.imgur.com/az1CuDs.png" />
-      </button>
-      <Modal id="projectEdit-modal">
+      </button> -->
+      <!-- <Modal id="projectEdit-modal">
         <template #modal-title> Edit PROFILE </template>
         <template #modal-body>
           <EditProjectModal />
         </template>
-      </Modal>
+      </Modal> -->
 
       <div
         class="offcanvas offcanvas-start"
@@ -83,7 +83,7 @@ import Projects from '../components/Projects.vue';
 
 
 export default {
-   components: { ProjectsPage },
+  components: { ProjectsPage },
   name: 'Project',
   setup() {
     const route = useRoute()
