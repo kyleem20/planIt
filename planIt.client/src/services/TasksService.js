@@ -4,7 +4,7 @@ import { api } from "./AxiosService";
 
 class TasksService {
   async getAll(id) {
-    const res = await api.get('api/projects/' + id + '/tasks')
+    const res = await api.get(`api/projects/${id}/tasks/`)
     AppState.tasks = res.data
   }
   async getTaskId(id) {

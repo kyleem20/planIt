@@ -34,14 +34,15 @@ export default {
       }
     })
     return {
-      activeProject: computed(() => AppState.activeProject),
-      project: computed(() => AppState.projects),
-      //   activeProject: computed(() => {
-      //     let projects = AppState.activeProject
-      //     if (projects.value) {
-      //       router.push({ path: '/projects/' + id + '/sprints/'})
-      //     }
-      // })
+      project: computed(() => AppState.activeProject),
+      // project: computed(() => AppState.projects),
+    //   activeProject: computed(() => {
+    //     let projects = AppState.activeProject
+    //     if (projects.value) {
+    //       router.push({ path: '/projects/' + id + '/sprints/'})
+    //     }
+    // })
+
     }
   }
 }
@@ -84,4 +85,9 @@ export default {
 
 
 <style lang="scss" scoped>
+.subHeadText {
+  font: #844586;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+}
 </style>

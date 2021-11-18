@@ -1,16 +1,171 @@
 <template>
-  <div class="component"></div>
+  <div class="row" align="left">
+    <div class="col-12 d-flex" v-for="t in tasks" :key="t.id" :task="t">
+      <div class="form-check">
+        <label class="form-check-label ms-3">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name=""
+            id=""
+            value="checkedValue"
+            unchecked
+          />
+          <h6>
+            <b> {{ t.name }} </b>
+          </h6>
+        </label>
+        <!-- <p> Created - DATE | Completed - DATE</p> -->
+        <button
+          class="btn"
+          data-bs-toggle="offcanvas"
+          href="#notesOffCanvas"
+          rolw="button"
+          aria-controls="notesOffCanvas"
+        >
+          0 <img class="commentImg" src="https://i.imgur.com/rlHQekg.png" />
+        </button>
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="notesOffCanvas"
+          aria-labelledby="notesOffCanvasLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="notesOffCanvasLabel">
+              SPRINT NAME > TASK NAME
+            </h5>
+            <!--  TODO {{sprint.name}} > {{task.name}} -->
+            <button
+              type="button"
+              class="btn-close text-reset"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <hr class="m-0" />
+          <div class="row offcanvas-body d-flex">
+            <div class="col-12">
+              <p class="projectsText"><b>Status</b></p>
+              <div class="row">
+                <div class="col-12 d-flex justify-content-around">
+                  <p
+                    class="rounded-pill pendingPill text-light text-center"
+                    align="middle"
+                  >
+                    Pending
+                  </p>
+                  <p
+                    class="rounded-pill progressPill text-light text-center"
+                    align="middle"
+                  >
+                    In Progress
+                  </p>
+                  <!-- TODO v-if here -->
+                  <p class="rounded-pill completedPill">Done</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 text-center notesText">Notes</div>
+              </div>
+              <hr />
+              <!-- <AddNote /> -->
+              <div>
+                <!-- <Note /> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        0
+        <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
+      </div>
+      <button class="btn deleteTask">
+        Delete Task &nbsp;&nbsp;
+        <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
+      </button>
+    </div>
+  </div>
 </template>
 
 
 <script>
+import { computed } from '@vue/reactivity'
+import { useRoute } from 'vue-router'
+import { AppState } from '../AppState'
+import { onMounted } from '@vue/runtime-core'
+import { sprintsService } from '../services/SprintsService'
+import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
+import { tasksService } from '../services/TasksService'
 export default {
-  setup() {
-    return {}
+  props: {
+    sprintId: { type: String, required: true }
+  },
+  setup(props) {
+    const route = useRoute()
+    // onMounted(async () => {
+    //   try {
+    //     if (route.params.id) {
+    //       await tasksService.getAll(route.params.id)
+    //     }
+    //   } catch (error) {
+    //     logger.error(error)
+    //     Pop.toast("Issue with active project .vue", 'error')
+    //   }
+    // })
+    return {
+      sprints: computed(() => AppState.sprints),
+      tasks: computed(() => AppState.tasks.filter(t => t.sprintId === props.sprintId)),
+    }
   }
 }
 </script>
 
 
 <style lang="scss" scoped>
+.weight {
+  height: 25px;
+}
+.commentImg {
+  height: 25px;
+}
+.pendingPill {
+  height: 2rem;
+  width: 6rem;
+  font-family: "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#aec6ee, #013571);
+}
+.progressPill {
+  height: 2rem;
+  width: 6rem;
+  font-family: "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#f7b9ff, #844586);
+}
+.incompletedPill {
+  height: 1.5rem;
+  width: 5rem;
+  font-family: "Arial Narrow Bold", sans-serif;
+  border: 2px #949494;
+}
+.notesText {
+  line-height: 1;
+  font-size: 1.25rem;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#013571, #aec6ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.trashCan {
+  height: 25px;
+}
+.deleteTask {
+  width: 150px;
+  border: none;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#f7b9ff, #844586);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 </style>
