@@ -17,7 +17,7 @@ class ProjectsService {
   async getProjectById(id){
     const res = await api.get("api/projects/"+id)
     logger.log(res.data)
-    AppState.projects = res.data
+    AppState.activeProject = res.data
   }
   async remove(id){
     const res = await api.delete('api/projects/'+ id)

@@ -1,7 +1,7 @@
 <template>
   <div class="col-12">
     <div class="row px-3">
-      <div class="col-12" v-if="project.id === activeProject">
+      <div class="col-12" >
         <div class=" m-2 p-3">
           <h1 class="pnText">{{ project.name }}</h1>
           <p>{{ project.description }}</p>
@@ -47,8 +47,8 @@ export default {
       }
     })
     return {
-      activeProject: computed(() => AppState.activeProject),
-      project: computed(() => AppState.projects),
+      project: computed(() => AppState.activeProject),
+      // project: computed(() => AppState.projects),
     //   activeProject: computed(() => {
     //     let projects = AppState.activeProject
     //     if (projects.value) {
@@ -97,4 +97,9 @@ export default {
 
 
 <style lang="scss" scoped>
+.subHeadText {
+  font: #844586;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+}
 </style>
