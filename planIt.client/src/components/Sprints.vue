@@ -68,23 +68,40 @@ import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { AppState } from '../AppState'
 import { useRoute } from 'vue-router'
+import { tasksService } from '../services/TasksService'
+import { projectsService } from '../services/ProjectsService'
+import { onMounted } from '@vue/runtime-core'
 
 export default {
   setup() {
     const route = useRoute()
-    //  onMounted(async () => {
-    //     try {
-    //       if (route.params.id) {
-    //         await sprintsService.getAll(route.params.id)
-    //       }
-    //     } catch (error) {
-    //       logger.error(error)
-    //       Pop.toast("Issue with active project .vue", 'error')
-    //     }
-    //   })
+    
+    onMounted(async () => {
+      try {
+        if (route.params.id) {
+          // await projectsService.getProjectById(route.params.id)
+          await tasksService.getAll(route.params.id)
+        }
+      } catch (error) {
+        logger.error(error)
+        Pop.toast("Issue with active project .vue", 'error')
+      }
+    })
     return {
       sprints: computed(() => AppState.sprints),
       activeProject: computed(() => AppState.activeProject),
+
+      async getTasksClick(){
+       try {
+         if (route.params.id) {
+           // await projectsService.getProjectById(route.params.id)
+           await tasksService.getAll(route.params.id)
+         }
+       } catch (error) {
+         logger.error(error)
+         Pop.toast("Issue with active project .vue", 'error')
+       }
+     },
 
     }
   }
