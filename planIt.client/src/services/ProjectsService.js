@@ -8,12 +8,13 @@ class ProjectsService {
   async getAll(){
     const res = await api.get('api/projects/')
     AppState.projects = res.data
+
   } 
   async create(data){
     const res = await api.post('api/projects/', data)
     AppState.projects.unshift(res.data)
   }
-  async getProjectsById(id){
+  async getProjectById(id){
     const res = await api.get("api/projects/"+id)
     logger.log(res.data)
     AppState.projects = res.data

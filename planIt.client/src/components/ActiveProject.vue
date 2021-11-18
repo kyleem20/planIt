@@ -1,0 +1,100 @@
+<template>
+  <div class="col-12">
+    <div class="row px-3">
+      <div class="col-12" v-if="project.id === activeProject">
+        <div class=" m-2 p-3">
+          <h1 class="pnText">{{ project.name }}</h1>
+          <p>{{ project.description }}</p>
+          <span class="m-4"> </span>
+        </div>
+        <div class="card">
+          <div class="row">
+            <div class="col-12">
+              <Sprints />
+            </div>
+          </div>
+          <span class="m-4"> </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<script>
+import { computed } from '@vue/reactivity'
+import { AppState } from '../AppState'
+import { projectsService } from '../services/ProjectsService';
+import { useRoute, useRouter } from 'vue-router';
+import { logger } from '../utils/Logger';
+import Pop from '../utils/Pop';
+import { onMounted } from '@vue/runtime-core';
+import { sprintsService } from '../services/SprintsService';
+
+export default {
+  setup() {
+    const route = useRoute()
+    const router = useRouter()
+    onMounted(async () => {
+      try {
+        if (route.params.id) {
+          await projectsService.getProjectById(route.params.id)
+          await sprintsService.getAll(route.params.id)
+        }
+      } catch (error) {
+        logger.error(error)
+        Pop.toast("Issue with active project .vue", 'error')
+      }
+    })
+    return {
+      activeProject: computed(() => AppState.activeProject),
+      project: computed(() => AppState.projects),
+    //   activeProject: computed(() => {
+    //     let projects = AppState.activeProject
+    //     if (projects.value) {
+    //       router.push({ path: '/projects/' + id + '/sprints/'})
+    //     }
+    // })
+    }
+  }
+}
+
+// export default {
+//   setup() {
+//     return {
+//       spell: computed(() => AppState.activeSpell),
+//       async prepareToggle() {
+//         try {
+//           await mySpellService.prepareToggle()
+//           Pop.toast("Prepared", 'success')
+//         } catch (error) {
+//           logger.error(error)
+//           Pop.toast('Something went wrong', 'error')
+//         }
+//       },
+//       async addSpell() {
+//         try {
+//           await mySpellService.addSpell()
+//           Pop.toast("Added", 'success')
+//         } catch (error) {
+//           logger.error(error)
+//           Pop.toast('Something went wrong', 'error')
+//         }
+//       },
+//       async removeSpell() {
+//         try {
+//           await mySpellService.removeSpell()
+//           Pop.toast("Removed", 'success')
+//         } catch (error) {
+//           logger.error(error)
+//           Pop.toast('Something went wrong', 'error')
+//         }
+//       }
+//     }
+//   }
+// }
+</script>
+
+
+<style lang="scss" scoped>
+</style>

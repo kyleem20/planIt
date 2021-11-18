@@ -6,13 +6,13 @@ const { api } = require("./AxiosService");
 class NotesService {
 
   async getAll(id) {
-    const res = await api.get('api/projects' + id)
+    const res = await api.get('api/projects/' + id)
     AppState.notes = res.data
   }
 
   async create(id) {
     const res = await api.post('api/projects/' + id + '/notes', id)
-    AppState.notes = res.data
+    AppState.notes.unshift(res.data)
   }
 
   async getNoteId(id) {
@@ -21,8 +21,8 @@ class NotesService {
   } 
 
   async remove(id){
-    const res = await api.delete('api/projects/' + id + '/notes')
-    AppState.notes.filter(p => p.id !== id)
+    const res = await api.delete('api/projects/' + id + '/notes/', id)
+    AppState.notes.filter(n => n.id !== id)
     AppState.notes = AppState.notes
   }
   

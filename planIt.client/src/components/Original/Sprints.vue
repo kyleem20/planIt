@@ -1,11 +1,8 @@
 <template>
   <div class="row m-0 justify-content-center">
-    <div class="col-11 card border-info elevation-3">
-              <h5 class="sprintsText">Sprints</h5>
-        <p>
-          Group your tasks into sprints for over-arching collections for better
-          organization.
-        </p>
+    <div class="col-11 card border-info elevation-3" v-for="s in sprints" :key="s.id" :sprint="s">
+              <h5 class="sprintsText">{{s.name}}</h5>
+       
       
       <div
         class="
@@ -52,7 +49,7 @@
             class="card-body d-flex justify-content-between collapse"
             data-bs-toggle="collapse"
           >
-            <Task />
+            <!-- <Task /> -->
             <div class="d-flex align-items-end justify-content-center">
               <button class="deleteSprint">
                 DELETE SPRINT &nbsp;&nbsp;
@@ -71,6 +68,8 @@
 import { computed } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import { sprintsService } from '../services/SprintsService'
+import { AppState } from '../AppState'
+
 
 export default {
 setup() {

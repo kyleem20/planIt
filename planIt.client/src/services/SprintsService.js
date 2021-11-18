@@ -2,24 +2,25 @@ import { api } from "./AxiosService";
 import {AppState} from "../AppState"
 import { logger } from "../utils/Logger";
 
+let activeProjectId = AppState.activeProject
 class SprintsService {
   async getAll(id){
-    const res = await api.get('api/projects/'+ id)
+    const res = await api.get(`api/projects/${id}/sprints`)
     AppState.sprints = res.data
   } 
   async create(id){
-    const res = await api.post('api/projects/'+ id +'/sprints/', id)
+    const res = await api.post(`api/projects/${projectId}/sprints/`, id)
     AppState.sprints.unshift(res.data)
   }
-  async getSprintProjectId(id){
-    const res = await api.get('api/projects/'+id+'/sprints')
+  async getSprintId(id){
+    const res = await api.get(`api/projects/${projectId}/sprints/`)
     logger.log(res.data)
     AppState.sprints = res.data
   }
   async remove(id){
-    const res = await api.delete('api/projects/'+ id +"/sprints")
+    const res = await api.delete(`api/projects/${projectId}/sprints/`)
     logger.log(res.data)
-    AppState.sprints.filter(p => p.id !== id)
+    AppState.sprints.filter(s => s.id !== id)
     AppState.sprints = AppState.sprints
   }
 

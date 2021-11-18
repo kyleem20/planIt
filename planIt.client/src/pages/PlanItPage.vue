@@ -89,7 +89,7 @@ export default {
     const route = useRoute()
     onMounted(async () => {
       try {
-        await projectsService.getAll(route.params.id);
+        // await projectsService.getAll(route.params.id);
         await projectsService.getProjectsById(route.params.id)
 
       } catch (error) {

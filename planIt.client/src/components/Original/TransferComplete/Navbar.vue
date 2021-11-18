@@ -19,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Home' }" class="btn lighten-30">
+          <router-link :to="{ name: 'PlanIt' }" class="btn lighten-30">
             <h2 class="planItText">Plan-It</h2>
           </router-link>
         </li>

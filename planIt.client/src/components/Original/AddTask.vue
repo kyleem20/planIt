@@ -47,7 +47,7 @@ import { useRouter } from "vue-router"
 import { Modal } from "bootstrap";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
-import { taskService } from "../services/TaskService"
+import { tasksService } from "../services/TasksService"
 import { ref } from "@vue/reactivity";
 
 export default {
@@ -59,7 +59,7 @@ export default {
       task,
       async handleSubmit() {
         try {
-          await taskService.create(task.value)
+          await tasksService.create(task.value)
           Modal.getOrCreateInstance(
             document.getElementById("addTask-modal")
           ).show();

@@ -50,7 +50,7 @@ export default {
       }
     })
     return {
-      project: computed(() => AppState.project),
+      project: computed(() => AppState.projects),
     }
   }
 }

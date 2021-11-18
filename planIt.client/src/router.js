@@ -11,11 +11,11 @@ const routes = [
     name: 'Home',
     component: loadPage('HomePage')
   },
-  {
-    path: '/planit',
-    name: 'PlanIt',
-    component: loadPage('PlanItPage')
-  },
+  // {
+  //   path: '/planit',
+  //   name: 'PlanIt',
+  //   component: loadPage('PlanItPage')
+  // },
   {
     path: '/account',
     name: 'Account',

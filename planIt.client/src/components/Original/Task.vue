@@ -70,9 +70,9 @@
                 <div class="col-12 text-center notesText">Notes</div>
               </div>
               <hr />
-              <AddNote />
+              <!-- <AddNote /> -->
               <div>
-                <Note />
+                <!-- <Note /> -->
               </div>
             </div>
           </div>
