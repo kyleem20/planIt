@@ -51,8 +51,9 @@
             align="right"
             data-bs-toggle="collapse"
           >
-            TASKS LIVE HERE
-            <!-- <Task /> -->
+            <div class="row">
+              <Tasks />
+            </div>
           </div>
         </div>
       </div>

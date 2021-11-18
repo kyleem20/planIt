@@ -24,7 +24,6 @@
       <span class="m-4"> </span>
  -->
     </div>
-    <Sprints />
   </div>
 </template>
 

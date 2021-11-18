@@ -30,8 +30,8 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="offcanvas-body">
-              <div class="col-10" align="left">
+            <div class="col-10" align="left">
+              <div class="offcanvas-body">
                 <p class="projectsText">
                   <Projects />
                 </p>
@@ -101,4 +101,37 @@ export default {
 
 
 <style lang="scss" scoped>
+.sprintsText {
+  line-height: 1;
+  font-size: 1.5rem;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#f7b9ff, #844586);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pnText {
+  font-weight: 500;
+  font-family: "Lucida Sans", "Lucida Sans Regular", Verdana;
+}
+.projectsText {
+  line-height: 1;
+  font-size: 1.5rem;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#f7b9ff, #844586);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.createSprintBtn {
+  width: 12rem;
+  height: 3rem;
+  line-height: 1;
+  font-size: 1.25rem;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#f7b9ff, #844586);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.addSprintPlanet {
+  height: 2rem;
+}
 </style>

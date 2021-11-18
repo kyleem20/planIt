@@ -99,9 +99,9 @@ import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { tasksService } from '../services/TasksService'
 export default {
-    props:{
-        sprintId: {type: String, required: true}
-    },
+  props: {
+    sprintId: { type: String, required: true }
+  },
   setup(props) {
     const route = useRoute()
     // onMounted(async () => {

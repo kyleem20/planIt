@@ -6,7 +6,7 @@
         <div class="col-1 sideTabBtns pt-4 ps-0">
           <!-- NOTE This is the Profile, their projects offcanvas: needs edit profile inside -->
           <!-- Must always display to allow navigation between projects -->
-          <button
+          <!-- <button
             class="btn ps-0"
             data-bs-toggle="offcanvas"
             href="#projectOffCanvas"
@@ -14,7 +14,7 @@
             aria-controls="projectOffCanvas"
           >
             <img src="https://i.imgur.com/395nkyu.png" />
-          </button>
+          </button> -->
           <!-- NOTE This is will not be edit project/profile; not necessary unless we want to add something here -->
           <!-- <button
           class="btn ps-0"
