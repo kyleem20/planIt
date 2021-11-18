@@ -9,15 +9,7 @@
       <h5 class="sprintsText">{{ s.name }}</h5>
       <p>{{ s.startDate }}</p>
 
-      <div
-        class="
-          card-header
-          bg-transparent
-          d-flex
-          justify-content-between
-          align-items-center
-        "
-      >
+      <div class="card-header bg-transparent d-flex justify-content-between">
         <h5
           class="sprintInfoText btn selectable col-3"
           data-bs-toggle="collapse"
@@ -31,6 +23,9 @@
             <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
           </p>
         </h5>
+        <div class="col-3">
+          <p><b>0/0 Tasks Complete</b></p>
+        </div>
         <button
           class="btn createTaskBtn border-primary addSprintBtn mb-4 col-3"
           data-bs-toggle="modal"
@@ -44,23 +39,20 @@
             <!-- <AddTask /> -->
           </template>
         </Modal>
-        <div class="col-3">
-          <p><b>0/0 Tasks Complete</b></p>
-        </div>
+        <button class="deleteSprint">
+          DELETE SPRINT &nbsp;&nbsp;
+          <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
+        </button>
       </div>
       <div class="collapse mb-3" id="sprintDrawer">
         <div class="row">
           <div
             class="col-12 card-body d-flex justify-content-between collapse"
+            align="right"
             data-bs-toggle="collapse"
           >
+            TASKS LIVE HERE
             <!-- <Task /> -->
-            <div class="d-flex align-items-end justify-content-center">
-              <button class="deleteSprint">
-                DELETE SPRINT &nbsp;&nbsp;
-                <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
-              </button>
-            </div>
           </div>
         </div>
       </div>
