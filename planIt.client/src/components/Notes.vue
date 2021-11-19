@@ -1,8 +1,11 @@
 <template>
   <div class="note row" v-for="n in notes" :key="n.id">
     <div class="col-12">
+      <img class="profilePic" :src="account.picture" />
       {{ n.body }}
-    <button class="btn btn-danger" @click="removeNote(n.id)" >X</button>
+      <button class="btn" @click="removeNote(n.id)">
+        <i class="text-danger mdi mdi-delete"></i>
+      </button>
     </div>
   </div>
 </template>
@@ -21,13 +24,14 @@ export default {
     taskId: { type: String, required: true },
   },
   setup(props) {
-      const route = useRoute()
+    const route = useRoute()
     //   debugger
-      const projectId = route.params.id
+    const projectId = route.params.id
     return {
       tasks: computed(() => AppState.tasks),
+      account: computed(() => AppState.account),
       notes: computed(() => AppState.notes.filter(n => n.taskId === props.taskId)),
-    async removeNote(noteId) {
+      async removeNote(noteId) {
         try {
           if (projectId) {
             await notesService.remove(noteId, projectId);
@@ -46,4 +50,8 @@ export default {
 
 
 <style lang="scss" scoped>
+.profilePic {
+  height: 35px;
+  border-radius: 50%;
+}
 </style>

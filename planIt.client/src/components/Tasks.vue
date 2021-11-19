@@ -33,7 +33,7 @@
         >
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="notesOffCanvasLabel">
-              SPRINT NAME > TASK NAME
+              {{ s.name }} > {{ t.name }}
             </h5>
             <!--  TODO {{sprint.name}} > {{task.name}} -->
             <button
@@ -96,7 +96,7 @@
           </div>
         </div>
 
-        {{t.weight}}
+        {{ t.weight }}
         <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
       </div>
       <button class="btn deleteTask" @click="removeTask(t.id)">
@@ -156,12 +156,12 @@ export default {
         }
         return tasksService.getAll(projectId)
       },
-      
+
       async createNote(taskId) {
         try {
           if (route.params.id) {
             //   debugger
-              state.editable.taskId = taskId
+            state.editable.taskId = taskId
             await notesService.create(route.params.id, state.editable);
             state.editable = {}
           }
