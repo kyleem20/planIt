@@ -55,7 +55,7 @@ export default {
         try {
           if (projectId) {
             await projectsService.remove(projectId);
-            router.push({ path: '/projects/' + projectId })
+            router.push({ path: '/'})
             AppState.activeProject = projectId
             state.editable = {}
           }
