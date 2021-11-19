@@ -10,8 +10,8 @@ class ProjectsService {
     AppState.projects = res.data
 
   } 
-  async create(){
-    const res = await api.post('api/projects/')
+  async create(id){
+    const res = await api.post('api/projects/', id)
     AppState.projects.unshift(res.data)
   }
   async getProjectById(id){

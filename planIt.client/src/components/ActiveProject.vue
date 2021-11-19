@@ -2,6 +2,7 @@
   <div class="col-12">
     <div class="row px-3">
       <div class="col-12" >
+        <button class="btn btn-primary" @click="removeProject(project.id)">Delete</button>
         <div class=" m-2 p-3">
           <h1 class="pnText">{{ project.name }}</h1>
           <p>{{ project.description }}</p>
@@ -72,6 +73,20 @@ export default {
     })
     return {
       project: computed(() => AppState.activeProject),
+      async removeProject(projectId) {
+        try {
+          if (projectId) {
+            await projectsService.remove(projectId);
+            router.push({ path: '/projects/' + projectId })
+            AppState.activeProject = projectId
+            state.editable = {}
+          }
+        } catch (error) {
+          logger.log(error)
+          Pop.toast("Delete task is not working", "error");
+        }
+        return router({ name: 'Home' })
+      },
     }
   }
 }

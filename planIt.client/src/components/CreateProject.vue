@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="createProject()">
+  <form @submit.prevent="createProject">
     <div>
       <div>
         <label for="name" class="form-label d-flex">Project Name:</label>
@@ -58,7 +58,7 @@ export default {
       async createProject() {
         try {
             // state.editable.projectId = projectId
-            await projectsService.create(route.params.id, state.editable);
+            await projectsService.create(state.editable);
             state.editable = {}
         } catch (error) {
           logger.log(error)
