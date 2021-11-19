@@ -17,7 +17,7 @@
           <b> {{ t.name }} </b>
         </h6>
         <!-- </div> -->
-        <!-- <p> Created - DATE | Completed  - DATE</p> -->
+        <!-- <p> Created - DATE | Completed  - DATE</p> - -->
         <button
           class="btn"
           data-bs-toggle="offcanvas"
