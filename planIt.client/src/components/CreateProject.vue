@@ -46,10 +46,12 @@ import { reactive } from '@vue/reactivity';
 import { projectsService } from '../services/ProjectsService';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
+import { Modal } from 'bootstrap';
 export default {
   setup() {
     const route = useRoute()
+    const router = useRouter()
     const state = reactive({
       editable: {}
     })
@@ -59,7 +61,10 @@ export default {
         try {
           // state.editable.projectId = projectId
           await projectsService.create(state.editable);
-          state.editable = {}
+          // router.push({ path: '/projets/' + state.editable })
+          // Modal.getOrCreateInstance(document.getElementById("CreateProject")).hide();
+          // state.editable = {}
+
         } catch (error) {
           logger.log(error)
           Pop.toast("Create is not working", "error");

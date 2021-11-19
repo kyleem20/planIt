@@ -1,5 +1,10 @@
 <template>
-  <div class="row m-0 justify-content-center">
+  <div
+    class="row m-0 justify-content-center"
+    dropzone="changeTask"
+    @draagover.prevent
+    @drop.prevent="dropTask()"
+  >
     <div
       class="col-12 card border-info elevation-3 m-2"
       v-for="s in sprints"
@@ -136,6 +141,9 @@ export default {
         }
       },
 
+      async dropTask() {
+        await tasksService.moveTask(props.tasks.id)
+      }
     }
   }
 
