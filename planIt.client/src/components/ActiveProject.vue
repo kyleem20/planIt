@@ -41,6 +41,7 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import { onMounted } from '@vue/runtime-core';
 import { sprintsService } from '../services/SprintsService';
+import { profileService } from '../services/ProfileService';
 
 export default {
   setup() {
@@ -56,7 +57,15 @@ export default {
         logger.error(error)
         Pop.toast("Issue with active project.vue", 'error')
       }
-    })
+    }),
+    onMounted(async () => {
+      try {
+        await profileService.getProfile(route.params.id);
+      } catch (error) {
+        logger.error(error);
+        Pop.toast(error.message);
+      }
+    });
     return {
       project: computed(() => AppState.activeProject),
       async removeProject(projectId) {

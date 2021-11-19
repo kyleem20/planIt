@@ -8,7 +8,8 @@ export class AccountController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
-      .put('/', this.edit)
+      // NOTE do not need an id on the .put on the edit account
+      .put('', this.edit)
     // FIXME need a put route tpo edit account
   }
 
@@ -23,7 +24,7 @@ export class AccountController extends BaseController {
 
   async edit(req, res, next) {
     try {
-      const account = await accountService.updateAccount(req.userInfo)
+      const account = await accountService.updateAccount(req.userInfo, req.body)
       res.send(account)
     } catch (error) {
       next(error)
