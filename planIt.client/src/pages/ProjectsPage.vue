@@ -36,7 +36,7 @@
               </div>
             </div>
           </div>
-          <!-- <button
+          <button
             class="btn ps-0"
             data-bs-toggle="modal"
             data-bs-target="#projectEdit-modal"
@@ -51,7 +51,7 @@
             <template #modal-body>
               <Profile />
             </template>
-          </Modal> -->
+          </Modal>
         </div>
       </div>
       <ActiveProject />

@@ -1,8 +1,8 @@
 <template>
   <div class="row">
     <div class="col-11">
-      <div class="profile form component">
-        <form @submit.prevent="edit(account)">
+      <div class="profile form component" >
+        <form @submit.prevent="edit(account.id)">
           <label for="">Profile Picture</label>
           <input
             type="url"
@@ -45,7 +45,7 @@ import { Modal } from 'bootstrap';
 
 
 export default {
-  props: { account: { type: Object, required: true } },
+  props:{account: {type: Object}},
   setup() {
     // const route = useRoute();
     // onMounted(async () => {
@@ -58,6 +58,7 @@ export default {
     // });
 
     return {
+      account: computed(() => AppState.account),
       async edit(account) {
         try {
           await accountService.edit(account);
