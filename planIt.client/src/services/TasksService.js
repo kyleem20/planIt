@@ -33,13 +33,13 @@ class TasksService {
   }
 
   async taskIsComplete(taskId, projectId) {
-    await api.put(`api/projects/${projectId}/tasks/${taskId}`, taskId)
-    // AppState.tasks.isComplete = !AppState.tasks.isComplete
-    const found = AppState.tasks.find(t => t.taskId !== taskId)
-    logger.log('complete', found)
-    debugger
-    found.isComplete = !found.isComplete
-    AppState.tasks = found.isComplete
+    const found = AppState.tasks.find(t => t.taskId === taskId)
+    AppState.tasks.isComplete = !AppState.tasks.isComplete
+    // logger.log('complete', found)
+    // debugger
+    // found.isComplete = !found.isComplete
+    // AppState.tasks = AppState.tasks
+    await api.put(`api/projects/${projectId}/tasks/${taskId}`)
   }
 }
 
