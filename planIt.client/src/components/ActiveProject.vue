@@ -11,6 +11,14 @@
       >
         Add Sprint
       </button>
+       <div :id="'#createSprint-' + project.id">
+        <Modal id="addSprint-modal">
+          <template #modal-title> Add Sprint </template>
+          <template #modal-body>
+           <CreateSprint :projectId="project.id"/>
+          </template>
+        </Modal>
+       </div>
       <button class="btn-danger m-2 rounded" @click="removeProject(project.id)">
         Delete Project
       </button>
