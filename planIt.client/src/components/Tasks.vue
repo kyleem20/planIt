@@ -51,7 +51,7 @@
               <p class="projectsText"><b>Status</b></p>
               <div class="row">
                 <div class="col-12 d-flex justify-content-around">
-                  <p
+                  <!-- <p
                     class="rounded-pill pendingPill text-light text-center"
                     align="middle"
                   >
@@ -62,9 +62,9 @@
                     align="middle"
                   >
                     In Progress
-                  </p>
+                  </p> -->
                   <!-- TODO v-if here -->
-                  <p class="rounded-pill completedPill">Done</p>
+                  <!-- <p class="rounded-pill completedPill">Done</p> -->
                 </div>
               </div>
               <div class="row">
@@ -101,7 +101,7 @@
         {{ t.weight }}
         <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
       </div>
-      <button class="btn deleteTask" @click="removeTask(t.id)">
+      <button class="btn deleteTask" align="right" @click="removeTask(t.id)">
         Delete Task &nbsp;&nbsp;
         <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
       </button>
