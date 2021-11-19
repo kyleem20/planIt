@@ -32,9 +32,7 @@
             </div>
             <div class="col-10" align="left">
               <div class="offcanvas-body">
-                <p class="projectsText">
-                  <Projects />
-                </p>
+                <Projects />
               </div>
             </div>
           </div>
