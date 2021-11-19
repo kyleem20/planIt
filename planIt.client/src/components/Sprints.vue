@@ -13,7 +13,7 @@
         <button
           class="sprintInfoText btn col-3"
           data-bs-toggle="collapse"
-          :href="'#sprintdrawer-'+s.id"
+          :href="'#sprintdrawer-' + s.id"
           role="button"
           aria-expanded="false"
           aria-controls="sprintDrawer"
@@ -31,24 +31,23 @@
           data-bs-toggle="modal"
           :href="'#createTask-' + s.id"
           data-bs-target="#addTask-modal"
-          
         >
           Add Task
         </button>
         <div :id="'#createTask-' + s.id">
-        <Modal id="addTask-modal">
-          <template #modal-title> Add Task </template>
-          <template #modal-body>
-           <CreateTask :sprintId="s.id"/>
-          </template>
-        </Modal>
+          <Modal id="addTask-modal">
+            <template #modal-title> Add Task </template>
+            <template #modal-body>
+              <CreateTask :sprintId="s.id" />
+            </template>
+          </Modal>
         </div>
-        <button class="deleteSprint">
+        <button class="deleteSprint" @click="removeSprint(s.id)">
           DELETE SPRINT &nbsp;&nbsp;
           <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
         </button>
       </div>
-      <div class="collapse mb-3" :id="'sprintdrawer-'+s.id">
+      <div class="collapse mb-3" :id="'sprintdrawer-' + s.id">
         <div class="row">
           <div
             class="col-12 card-body d-flex justify-content-between collapse"
@@ -67,7 +66,7 @@
 
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed, reactive } from '@vue/reactivity'
 import { sprintsService } from '../services/SprintsService'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
@@ -78,9 +77,14 @@ import { projectsService } from '../services/ProjectsService'
 import { onMounted } from '@vue/runtime-core'
 
 export default {
-  setup() {
+  props: { projectId: { type: String, required: true } },
+  setup(props) {
     const route = useRoute()
-    
+    const projectId = route.params.id
+    const state = reactive({
+      editable: {}
+    })
+
     onMounted(async () => {
       try {
         if (route.params.id) {
@@ -93,21 +97,35 @@ export default {
       }
     })
     return {
+      state,
       sprints: computed(() => AppState.sprints),
       project: computed(() => AppState.activeProject),
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId === props.sprintId)),
 
-      async getTasksClick(){
-       try {
-         if (route.params.id) {
-           // await projectsService.getProjectById(route.params.id)
-           await tasksService.getAll(route.params.id)
-         }
-       } catch (error) {
-         logger.error(error)
-         Pop.toast("Issue with active project .vue", 'error')
-       }
-     },
+      async removeSprint(sprintId) {
+        try {
+          if (projectId) {
+            await sprintsService.remove(sprintId, projectId);
+            state.editable = {}
+          }
+        } catch (error) {
+          logger.log(error)
+          Pop.toast("Delete task is not working", "error");
+        }
+        return sprintsService.getAll(projectId)
+      },
+
+      async getTasksClick() {
+        try {
+          if (route.params.id) {
+            // await projectsService.getProjectById(route.params.id)
+            await tasksService.getAll(route.params.id)
+          }
+        } catch (error) {
+          logger.error(error)
+          Pop.toast("Issue with active project .vue", 'error')
+        }
+      },
 
     }
   }

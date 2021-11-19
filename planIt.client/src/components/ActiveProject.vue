@@ -5,7 +5,23 @@
         <div class=" m-2 p-3">
           <h1 class="pnText">{{ project.name }}</h1>
           <p>{{ project.description }}</p>
-          <span class="m-4"> </span>
+          <span class="m-4"></span>
+                  <button
+          class="btn createSprintBtn border-primary addSprintBtn mb-4 col-3"
+          data-bs-toggle="modal"
+          :href="'#createSprint-' + project.id"
+          data-bs-target="#addSprint-modal"
+          
+        >
+          Add Sprint
+        </button>
+        <div :id="'#createSprint-' + project.id">
+        <Modal id="addSprint-modal">
+          <template #modal-title> Add Sprint </template>
+          <template #modal-body>
+           <CreateSprint :projectId="project.id"/>
+          </template>
+        </Modal>
         </div>
         <div class="card">
           <div class="row">
@@ -15,6 +31,7 @@
           </div>
           <span class="m-4"> </span>
         </div>
+      </div>
       </div>
 <!-- 
   <div class="row px-3">

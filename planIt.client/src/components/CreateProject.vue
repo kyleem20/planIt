@@ -14,6 +14,17 @@
           max="100"
           required
         />
+        <input
+          v-model="state.editable.description"
+          class="form-control mb-3 justify-content-around d-flex"
+          type="text"
+          name="description"
+          id="description"
+          placeholder="Description"
+          min="10"
+          max="100"
+          required
+        />
       </div>
     </div>
     <div class="modal-footer">
@@ -46,11 +57,9 @@ export default {
       state,
       async createProject() {
         try {
-          if (route.params.id) {
-            state.editable.projectId = projectId
+            // state.editable.projectId = projectId
             await projectsService.create(route.params.id, state.editable);
             state.editable = {}
-          }
         } catch (error) {
           logger.log(error)
           Pop.toast("Create is not working", "error");
