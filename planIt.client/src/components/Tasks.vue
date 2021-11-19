@@ -2,19 +2,21 @@
   <div class="row" align="left">
     <div class="col-12 d-flex" v-for="t in tasks" :key="t.id">
       <div class="form-check">
-        <label class="form-check-label ms-3">
-          <input
-            type="checkbox"
-            class="form-check-input"
-            name=""
-            id=""
-            value="checkedValue"
-            unchecked
-          />
-          <h6>
-            <b> {{ t.name }} </b>
-          </h6>
-        </label>
+        <!-- <div v-if="t.id"> -->
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="taskComplete"
+          id="taskComplete"
+          value="checkedValue"
+          @click="taskIsComplete(t.id)"
+          v-model="t.isComplete"
+        />
+        <label class="form-check-label ms-3" for="taskComplete"> </label>
+        <h6>
+          <b> {{ t.name }} </b>
+        </h6>
+        <!-- </div> -->
         <!-- <p> Created - DATE | Completed - DATE</p> -->
         <button
           class="btn"
@@ -33,7 +35,7 @@
         >
           <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="notesOffCanvasLabel">
-              {{ s.name }} > {{ t.name }}
+              SPRINT NAME > {{ t.name }}
             </h5>
             <!--  TODO {{sprint.name}} > {{task.name}} -->
             <button
@@ -168,6 +170,18 @@ export default {
         } catch (error) {
           logger.log(error)
           Pop.toast("Create is not working", "error");
+        }
+      },
+
+      async taskIsComplete(taskId) {
+        try {
+          if (projectId)
+            // debugger
+            await tasksService.taskIsComplete(taskId, projectId)
+          Pop.toast("Complete", 'success')
+        } catch (error) {
+          logger.log(error)
+          Pop.toast("Edit was not marked", 'error');
         }
       }
     }
