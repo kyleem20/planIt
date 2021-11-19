@@ -6,29 +6,9 @@
         <div class="col-1 sideTabBtns pt-4 ps-0">
           <!-- NOTE This is the Profile, their projects offcanvas: needs edit profile inside -->
           <!-- Must always display to allow navigation between projects -->
-          <!-- <button
-            class="btn ps-0"
-            data-bs-toggle="offcanvas"
-            href="#projectOffCanvas"
-            rolw="button"
-            aria-controls="projectOffCanvas"
-          >
-            <img src="https://i.imgur.com/395nkyu.png" />
-          </button> -->
+
           <!-- NOTE This is will not be edit project/profile; not necessary unless we want to add something here -->
-          <!-- <button
-          class="btn ps-0"
-          data-bs-toggle="modal"
-          data-bs-target="#projectEdit-modal"
-        >
-          <img src="https://i.imgur.com/az1CuDs.png" />
-        </button>
-        <Modal id="projectEdit-modal">
-          <template #modal-title> Edit N/A </template>
-          <template #modal-body>
-            <EditProjectModal />
-          </template>
-        </Modal> -->
+
 
           <!-- <div
             class="offcanvas offcanvas-start"

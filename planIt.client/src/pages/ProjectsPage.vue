@@ -36,6 +36,22 @@
               </div>
             </div>
           </div>
+          <!-- <button
+            class="btn ps-0"
+            data-bs-toggle="modal"
+            data-bs-target="#projectEdit-modal"
+          >
+            <img src="https://i.imgur.com/az1CuDs.png" />
+          </button>
+          <Modal id="projectEdit-modal">
+            <template #modal-title>
+              <div class="mdi mdi-account-edit m-1"> Edit Profile</div>
+              </template
+            >
+            <template #modal-body>
+              <Profile />
+            </template>
+          </Modal> -->
         </div>
       </div>
       <ActiveProject />
