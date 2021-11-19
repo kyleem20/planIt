@@ -32,14 +32,26 @@ class TasksService {
     AppState.tasks = AppState.tasks
   }
 
-  async taskIsComplete(taskId, projectId) {
-    const found = AppState.tasks.find(t => t.taskId === taskId)
+  async isComplete(taskId, projectId) {
+    await AppState.tasks.find(t => t.taskId === taskId)
     AppState.tasks.isComplete = !AppState.tasks.isComplete
-    // logger.log('complete', found)
+    logger.log('complete', found)
     // debugger
     // found.isComplete = !found.isComplete
     // AppState.tasks = AppState.tasks
     await api.put(`api/projects/${projectId}/tasks/${taskId}`)
+  }
+
+  async prepToChange(task, oldSprintId) {
+    task.oldSprintId = oldSprintId
+    AppState.activeTask = task
+  }
+
+  changeTask(sprintId) {
+    let oldSprint = AppState.sprints.find(s => s.id === AppState.activeTask.oldSprintId)
+    let newSprint = AppState.sprints.find(s => s.id === roomId)
+    oldSprint.tasks = oldSprint.tasks.filter(t => t.id !== AppState.activeTask.id)
+    newSprint.items.push(AppState.activeTask)
   }
 }
 

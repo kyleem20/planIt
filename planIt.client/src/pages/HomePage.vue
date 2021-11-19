@@ -22,7 +22,7 @@
                 <template #modal-body> <CreateProject /> </template>
               </Modal>
             </div>
-            <div class="col-10" align="left">
+            <div class="car-body col-10" align="left">
               <Projects />
             </div>
           </div>

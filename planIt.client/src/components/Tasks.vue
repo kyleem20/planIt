@@ -1,5 +1,5 @@
 <template>
-  <div class="row" align="left">
+  <div class="row" align="left" draggable="true" @dragstart="prepToMove">
     <div class="col-12 d-flex" v-for="t in tasks" :key="t.id">
       <div class="form-check">
         <!-- <div v-if="t.id"> -->
@@ -9,7 +9,7 @@
           name="taskComplete"
           id="taskComplete"
           value="checkedValue"
-          @click="taskIsComplete(t.id)"
+          @click="isComplete(t.id)"
           v-model="t.isComplete"
         />
         <label class="form-check-label ms-3" for="taskComplete"> </label>
@@ -25,7 +25,7 @@
           rolw="button"
           aria-controls="notesOffCanvas"
         >
-          0 <img class="commentImg" src="https://i.imgur.com/rlHQekg.png" />
+          Notes <img class="commentImg" src="https://i.imgur.com/rlHQekg.png" />
         </button>
         <div
           class="offcanvas offcanvas-end"
@@ -173,15 +173,24 @@ export default {
         }
       },
 
-      async taskIsComplete(taskId) {
+      async isComplete(taskId) {
         try {
           if (projectId)
             // debugger
-            await tasksService.taskIsComplete(taskId, projectId)
+            await tasksService.isComplete(taskId, projectId)
           Pop.toast("Complete", 'success')
         } catch (error) {
           logger.log(error)
           Pop.toast("Edit was not marked", 'error');
+          // tasksService.toggleCheckbox(checkbox, id)
+        }
+      },
+
+      async prepToChange() {
+        try {
+          tasksService.prepToChange(props.sprintId)
+        } catch (error) {
+          logger.error(error)
         }
       }
     }
