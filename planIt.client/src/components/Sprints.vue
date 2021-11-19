@@ -32,14 +32,12 @@
           aria-expanded="false"
           aria-controls="sprintDrawer"
         >
+          <!-- TODO total weight -->
           <p>
-            Total Weight from Tasks
+            {{ s.length }} total wieght
             <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
           </p>
         </button>
-        <div class="col-3">
-          <p><b>0/0 Tasks Complete</b></p>
-        </div>
         <button
           class="btn createTaskBtn border-primary addSprintBtn mb-4 col-3"
           data-bs-toggle="modal"
@@ -70,6 +68,7 @@
           >
             <div class="row">
               <Tasks :sprintId="s.id" />
+              <!-- NOTE :task="t" was insid above previously -->
             </div>
           </div>
         </div>
@@ -114,6 +113,7 @@ export default {
       state,
       sprints: computed(() => AppState.sprints),
       project: computed(() => AppState.activeProject),
+      taskWeight: computed(() => AppState.tasks.weight),
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId === props.sprintId)),
 
       async removeSprint(sprintId) {
@@ -141,10 +141,13 @@ export default {
         }
       },
 
+      //NOTE draggable
       async dropTask() {
         await tasksService.moveTask(props.tasks.id)
       }
     }
+
+    //TODO add function for adding total weight. Will be loop with a +=
   }
 
 }

@@ -42,17 +42,20 @@ class TasksService {
     await api.put(`api/projects/${projectId}/tasks/${taskId}`)
   }
 
-  async prepToChange(task, oldSprintId) {
-    task.oldSprintId = oldSprintId
-    AppState.activeTask = task
-  }
+  //NOTE this is the stuff for the draggable and change in Sprint
+  // async prepToChange(task, oldSprintId) {
+  //   task.oldSprintId = oldSprintId
+  //   AppState.activeTask = task
+  // }
 
-  changeTask(sprintId) {
-    let oldSprint = AppState.sprints.find(s => s.id === AppState.activeTask.oldSprintId)
-    let newSprint = AppState.sprints.find(s => s.id === roomId)
-    oldSprint.tasks = oldSprint.tasks.filter(t => t.id !== AppState.activeTask.id)
-    newSprint.items.push(AppState.activeTask)
-  }
+  // changeTask(sprintId) {
+  //   // let oldSprint = AppState.sprints.find(s => s.id === AppState.activeTask.oldSprintId)
+  //       let oldSprint = AppState.sprints.find(s => s.id === AppState.activeTask)
+
+  //   let newSprint = AppState.sprints.find(s => s.id === roomId)
+  //   oldSprint.tasks = oldSprint.tasks.filter(t => t.id !== AppState.activeTask.id)
+  //   newSprint.items.push(AppState.activeTask)
+  // }
 }
 
 export const tasksService = new TasksService()

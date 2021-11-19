@@ -1,5 +1,5 @@
 <template>
-  <div class="row" align="left" draggable="true" @dragstart="prepToMove">
+  <div class="row" align="left" draggable="true" @dragstart="prepToChange">
     <div class="col-12 d-flex" v-for="t in tasks" :key="t.id">
       <div class="form-check">
         <!-- <div v-if="t.id"> -->
@@ -124,6 +124,7 @@ export default {
 
 
   props: {
+    //task: { type: Object, required: true },
     sprintId: { type: String, required: true },
   },
   setup(props) {
@@ -188,7 +189,7 @@ export default {
 
       async prepToChange() {
         try {
-          tasksService.prepToChange(props.sprintId)
+          tasksService.prepToChange(props.task, props.sprintId)
         } catch (error) {
           logger.error(error)
         }
