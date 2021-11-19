@@ -3,37 +3,7 @@
     <Navbar />
     <div class="col-12">
       <div class="row sprintInfoRow justify-content-between">
-        <div class="col-1 sideTabBtns pt-4 ps-0">
-          <!-- NOTE This is the Profile, their projects offcanvas: needs edit profile inside -->
-          <!-- Must always display to allow navigation between projects -->
-
-          <!-- NOTE This is will not be edit project/profile; not necessary unless we want to add something here -->
-
-
-          <!-- <div
-            class="offcanvas offcanvas-start"
-            tabindex="-1"
-            id="projectOffCanvas"
-            aria-labelledby="projectOffCanvasLabel"
-          >
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="projectOffCanvasLabel"></h5>
-              <button
-                type="button"
-                class="btn-close text-reset"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="offcanvas-body">
-              <div class="col-10" align="left">
-                <p class="projectsText">
-                  <Projects />
-                </p>
-              </div>
-            </div>
-          </div> -->
-        </div>
+        <div class="col-1 sideTabBtns pt-4 ps-0"></div>
       </div>
       <!-- NOTE This is where all projects will be displayed -->
       <div class="row">

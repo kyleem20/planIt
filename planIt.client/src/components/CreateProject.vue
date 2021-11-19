@@ -57,9 +57,9 @@ export default {
       state,
       async createProject() {
         try {
-            // state.editable.projectId = projectId
-            await projectsService.create(state.editable);
-            state.editable = {}
+          // state.editable.projectId = projectId
+          await projectsService.create(state.editable);
+          state.editable = {}
         } catch (error) {
           logger.log(error)
           Pop.toast("Create is not working", "error");
