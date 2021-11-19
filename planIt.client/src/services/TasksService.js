@@ -32,10 +32,10 @@ class TasksService {
     AppState.tasks = AppState.tasks
   }
 
-  async taskIsComplete(taskId, projectId) {
-    const found = AppState.tasks.find(t => t.taskId === taskId)
+  async isComplete(taskId, projectId) {
+    await AppState.tasks.find(t => t.taskId === taskId)
     AppState.tasks.isComplete = !AppState.tasks.isComplete
-    // logger.log('complete', found)
+    logger.log('complete', found)
     // debugger
     // found.isComplete = !found.isComplete
     // AppState.tasks = AppState.tasks

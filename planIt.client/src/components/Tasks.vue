@@ -9,7 +9,7 @@
           name="taskComplete"
           id="taskComplete"
           value="checkedValue"
-          @click="taskIsComplete(t.id)"
+          @click="isComplete(t.id)"
           v-model="t.isComplete"
         />
         <label class="form-check-label ms-3" for="taskComplete"> </label>
@@ -173,15 +173,19 @@ export default {
         }
       },
 
-      async taskIsComplete(taskId) {
+      async isComplete(taskId) {
         try {
           if (projectId)
             // debugger
-            await tasksService.taskIsComplete(taskId, projectId)
+            await tasksService.isComplete(taskId, projectId)
           Pop.toast("Complete", 'success')
         } catch (error) {
           logger.log(error)
           Pop.toast("Edit was not marked", 'error');
+
+
+
+          // tasksService.toggleCheckbox(checkbox, id)
         }
       }
     }
