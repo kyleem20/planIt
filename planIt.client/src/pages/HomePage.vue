@@ -71,9 +71,7 @@
                   </button>
                   <Modal id="addProject-modal">
                     <template #modal-title> Add Project </template>
-                    <template #modal-body>
-                      <!-- <AddProjectModal /> -->
-                    </template>
+                    <template #modal-body> <CreateProject /> </template>
                   </Modal>
                 </div>
                 <div class="col-10" align="left">
@@ -99,6 +97,7 @@ import { AppState } from '../AppState';
 
 export default {
   name: 'Home',
+  
   setup() {
     return {
       account: computed(() => AppState.account),
