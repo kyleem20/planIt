@@ -48,6 +48,8 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import { useRoute, useRouter } from 'vue-router';
 import { Modal } from 'bootstrap';
+import { watchEffect } from '@vue/runtime-core';
+import { AppState } from '../AppState';
 export default {
   setup() {
     const route = useRoute()
@@ -55,20 +57,24 @@ export default {
     const state = reactive({
       editable: {}
     })
+    watchEffect(async () => {
+
+    })
     return {
       state,
       async createProject() {
         try {
+
           // state.editable.projectId = projectId
           await projectsService.create(state.editable);
-          // router.push({ path: '/projects/' + state.editable })
-          // Modal.getOrCreateInstance(document.getElementById("CreateProject")).hide();
+          Modal.getOrCreateInstance(document.getElementById("CreateProject")).hide();
           // state.editable = {}
 
         } catch (error) {
           logger.log(error)
           Pop.toast("Create is not working", "error");
         }
+        // return projectsService.getProjectById(state.editable)
       }
     }
   }
