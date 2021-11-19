@@ -1,48 +1,26 @@
-<template>  
-  <div class="col-12">
-    <div class="row px-3">
-      <div class="col-12" >
-        <button class="btn btn-primary" @click="removeProject(project.id)">Delete</button>
-        <div class=" m-2 p-3">
-          <h1 class="pnText">{{ project.name }}</h1>
-          <p>{{ project.description }}</p>
-          <span class="m-4"></span>
-                  <button
-          class="btn createSprintBtn border-primary addSprintBtn mb-4 col-3"
-          data-bs-toggle="modal"
-          :href="'#createSprint-' + project.id"
-          data-bs-target="#addSprint-modal"
-          
-        >
-          Add Sprint
-        </button>
-        <div :id="'#createSprint-' + project.id">
-        <Modal id="addSprint-modal">
-          <template #modal-title> Add Sprint </template>
-          <template #modal-body>
-           <CreateSprint :projectId="project.id"/>
-          </template>
-        </Modal>
-        </div>
-        <div class="card">
-          <div class="row">
-            <div class="col-12">
-              <Sprints />
-            </div>
-          </div>
-          <span class="m-4"> </span>
+<template>
+  <div class="row justify-content-center">
+    <div class="col-10 m-2 p-3">
+      <h1 class="pnText" align="center">{{ project.name }}</h1>
+      <p align="center">{{ project.description }}</p>
+      <button
+        class="btn createSprintBtn border-primary addSprintBtn m-2"
+        data-bs-toggle="modal"
+        :href="'#createSprint-' + project.id"
+        data-bs-target="#addSprint-modal"
+      >
+        Add Sprint
+      </button>
+      <button class="btn-danger m-2 rounded" @click="removeProject(project.id)">
+        Delete Project
+      </button>
+      <div class="row">
+        <div class="col-12">
+          <Sprints />
         </div>
       </div>
-      </div>
-<!-- 
-  <div class="row px-3">
-    <div class="col-12 m-2 p-3" v-if="project.id === activeProject">
-      <h1 class="pnText">{{ project.name }}</h1>
-      <p>{{ project.description }}</p>
-      <span class="m-4"> </span>
- -->
     </div>
- </div>
+  </div>
 </template>
 
 
@@ -136,5 +114,13 @@ export default {
   font: #844586;
   line-height: 1;
   font-family: Impact, "Arial Narrow Bold", sans-serif;
+}
+.createSprintBtn {
+  line-height: 1;
+  font-size: 1.25rem;
+  font-family: Impact, "Arial Narrow Bold", sans-serif;
+  background: -webkit-linear-gradient(#013571, #aec6ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 </style>

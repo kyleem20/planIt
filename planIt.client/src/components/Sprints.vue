@@ -1,7 +1,7 @@
 <template>
   <div class="row m-0 justify-content-center">
     <div
-      class="col-11 card border-info elevation-3 m-2"
+      class="col-12 card border-info elevation-3 m-2"
       v-for="s in sprints"
       :key="s.id"
       :sprint="s"
@@ -9,7 +9,16 @@
       <h5 class="sprintsText">{{ s.name }}</h5>
       <p>{{ s.startDate }}</p>
 
-      <div class="card-header bg-transparent d-flex justify-content-between">
+      <div
+        class="
+          card-header
+          bg-transparent
+          d-flex
+          justify-content-between
+          align-content-middle
+        "
+        align="middle"
+      >
         <button
           class="sprintInfoText btn col-3"
           data-bs-toggle="collapse"
