@@ -63,7 +63,7 @@ export default {
           logger.log(error)
           Pop.toast("Delete task is not working", "error");
         }
-        return router({ name: 'Home' })
+        return projectsService.getAll()
       },
     }
   }
