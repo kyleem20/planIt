@@ -41,6 +41,18 @@ class TasksService {
     // AppState.tasks = AppState.tasks
     await api.put(`api/projects/${projectId}/tasks/${taskId}`)
   }
+
+  async prepToChange(task, oldSprintId) {
+    task.oldSprintId = oldSprintId
+    AppState.activeTask = task
+  }
+
+  changeTask(sprintId) {
+    let oldSprint = AppState.sprints.find(s => s.id === AppState.activeTask.oldSprintId)
+    let newSprint = AppState.sprints.find(s => s.id === roomId)
+    oldSprint.tasks = oldSprint.tasks.filter(t => t.id !== AppState.activeTask.id)
+    newSprint.items.push(AppState.activeTask)
+  }
 }
 
 export const tasksService = new TasksService()
