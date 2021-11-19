@@ -29,16 +29,20 @@
         <button
           class="btn createTaskBtn border-primary addSprintBtn mb-4 col-3"
           data-bs-toggle="modal"
+          :href="'#createTask-' + s.id"
           data-bs-target="#addTask-modal"
+          
         >
           Add Task
         </button>
+        <div :id="'#createTask-' + s.id">
         <Modal id="addTask-modal">
           <template #modal-title> Add Task </template>
           <template #modal-body>
-            <!-- <AddTask /> -->
+           <CreateTask :sprintId="s.id"/>
           </template>
         </Modal>
+        </div>
         <button class="deleteSprint">
           DELETE SPRINT &nbsp;&nbsp;
           <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />

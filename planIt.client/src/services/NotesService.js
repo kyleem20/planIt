@@ -5,24 +5,24 @@ import { api } from "./AxiosService";
 
 class NotesService {
 
-  async getAll(id) {
-    const res = await api.get(`api/projects/${id}/notes`)
+  async getAll(projectId) {
+    const res = await api.get(`api/projects/${projectId}/notes`)
     AppState.notes = res.data
   }
 
-  async create(id) {
-    const res = await api.post(`api/projects/${id}/notes`, id)
+  async create(projectId, noteId) {
+    const res = await api.post(`api/projects/${projectId}/notes`, noteId)
     AppState.notes.unshift(res.data)
   }
 
-  async getNoteId(id) {
-    const res = await api.get('api/projects/' + id + '/notes')
+  async getNoteId(projectId, noteId) {
+    const res = await api.get(`api/projects/${projectId}/notes/${noteId}`)
     AppState.notes = res.data
   } 
 
-  async remove(id){
-    const res = await api.delete('api/projects/' + id + '/notes/', id)
-    AppState.notes.filter(n => n.id !== id)
+  async remove(noteId, projectId){
+    const res = await api.delete(`api/projects/${projectId}/notes/${noteId}`)
+    AppState.notes.filter(n => n.noteId !== noteId)
     AppState.notes = AppState.notes
   }
   

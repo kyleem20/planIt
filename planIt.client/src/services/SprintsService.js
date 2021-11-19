@@ -4,23 +4,23 @@ import { logger } from "../utils/Logger";
 
 let activeProjectId = AppState.activeProject
 class SprintsService {
-  async getAll(id){
-    const res = await api.get(`api/projects/${id}/sprints`)
+  async getAll(projectId){
+    const res = await api.get(`api/projects/${projectId}/sprints`)
     AppState.sprints = res.data
   } 
-  async create(id){
-    const res = await api.post(`api/projects/${id}/sprints/`, id)
+  async create(projectId, sprintId){
+    const res = await api.post(`api/projects/${projectId}/sprints/`, sprintId)
     AppState.sprints.unshift(res.data)
   }
-  async getSprintId(id){
-    const res = await api.get(`api/projects/${id}/sprints/`+ id)
+  async getSprintById(projectId, sprintId){
+    const res = await api.get(`api/projects/${projectId}/sprints/${sprintId}`)
     logger.log(res.data)
     AppState.sprints = res.data
   }
-  async remove(id){
-    const res = await api.delete(`api/projects/${projectId}/sprints/`)
+  async remove(sprintId, projectId){
+    const res = await api.delete(`api/projects/${projectId}/sprints/${sprintId}`)
     logger.log(res.data)
-    AppState.sprints.filter(s => s.id !== id)
+    AppState.sprints.filter(s => s.sprintId !== sprintId)
     AppState.sprints = AppState.sprints
   }
 

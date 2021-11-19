@@ -3,16 +3,16 @@ import { api } from "./AxiosService";
 
 
 class TasksService {
-  async getAll(id) {
-    const res = await api.get(`api/projects/${id}/tasks/`)
+  async getAll(projectId) {
+    const res = await api.get(`api/projects/${projectId}/tasks/`)
     AppState.tasks = res.data
   }
-  async getTaskId(id) {
-    const res = await api.get('api/projects/' + id + '/tasks/' + id)
+  async getTaskId(projectId, taskId) {
+    const res = await api.get(`api/projects/${projectId}/tasks/${taskId}`)
     AppState.tasks = res.data
   }
-  async create(id) {
-    const res = await api.post('api/projects/' + id + '/tasks', id)
+  async create(projectId, taskId) {
+    const res = await api.post(`api/projects/${projectId}/tasks`, taskId)
     AppState.tasks.unshift(res.data)
   }
   async edit(id) {
@@ -25,9 +25,9 @@ class TasksService {
     }
     AppState.tasks.splice(index, 1, AppState.tasks)
   }
-  async remove(id) {
-    const res = await api.delete('api/projects/' + id + '/tasks/', id)
-    AppState.tasks.filter(t => t.id !== id)
+  async remove(taskId, projectId) {
+    const res = await api.delete(`api/projects/${projectId}/tasks/${taskId}`)
+    AppState.tasks.filter(t => t.taskId !== taskId)
     AppState.tasks = AppState.tasks
   }
 }

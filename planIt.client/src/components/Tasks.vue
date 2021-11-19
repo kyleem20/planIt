@@ -72,7 +72,7 @@
               <div class="row">
                 <div class="col-12 mt-2"><b>Add A Note</b></div>
               </div>
-              <form @submit.prevent="createNote">
+              <form @submit.prevent="createNote(t.id)">
                 <textarea
                   v-model="state.editable.body"
                   type="text"
@@ -84,7 +84,7 @@
                   max="250"
                   required
                 />
-                <div class="text-end mt-2" :v-model="state.editable.taskId">
+                <div class="text-end mt-2">
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
@@ -96,10 +96,10 @@
           </div>
         </div>
 
-        0
+        {{t.weight}}
         <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
       </div>
-      <button class="btn deleteTask">
+      <button class="btn deleteTask" @click="removeTask(t.id)">
         Delete Task &nbsp;&nbsp;
         <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
       </button>
@@ -117,17 +117,19 @@ import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { notesService } from '../services/NotesService'
 import { Modal } from 'bootstrap'
+import { tasksService } from '../services/TasksService'
 export default {
 
 
   props: {
-    sprintId: { type: String, required: true }
+    sprintId: { type: String, required: true },
   },
   setup(props) {
     const state = reactive({
       editable: {},
     })
     const route = useRoute()
+    const projectId = route.params.id
     onMounted(async () => {
       try {
         if (route.params.id) {
@@ -138,14 +140,29 @@ export default {
         Pop.toast("Issue with active project .vue", 'error')
       }
     })
+
     return {
       state,
       sprints: computed(() => AppState.sprints),
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId === props.sprintId)),
-      async createNote() {
+      async removeTask(taskId) {
+        try {
+          if (projectId) {
+            await tasksService.remove(taskId, projectId);
+          }
+        } catch (error) {
+          logger.log(error)
+          Pop.toast("Delete task is not working", "error");
+        }
+        return tasksService.getAll(projectId)
+      },
+      
+      async createNote(taskId) {
         try {
           if (route.params.id) {
-            await notesService.create(route.params.id);
+            //   debugger
+              state.editable.taskId = taskId
+            await notesService.create(route.params.id, state.editable);
             state.editable = {}
           }
         } catch (error) {
