@@ -39,7 +39,7 @@ import { projectsService } from '../services/ProjectsService';
 import { useRoute, useRouter } from 'vue-router';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
-import { onMounted } from '@vue/runtime-core';
+import { onMounted, watchEffect } from '@vue/runtime-core';
 import { sprintsService } from '../services/SprintsService';
 import { profileService } from '../services/ProfileService';
 
@@ -47,7 +47,7 @@ export default {
   setup() {
     const route = useRoute()
     const router = useRouter()
-    onMounted(async () => {
+    watchEffect(async () => {
       try {
         if (route.params.id) {
           await projectsService.getProjectById(route.params.id)
