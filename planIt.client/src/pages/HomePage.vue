@@ -13,11 +13,11 @@
               <button
                 class="btn createProjectBtn border-primary"
                 data-bs-toggle="modal"
-                data-bs-target="#addProject-modal"
+                data-bs-target="#CreateProject"
               >
                 Create Project
               </button>
-              <Modal id="addProject-modal">
+              <Modal id="CreateProject">
                 <template #modal-title> Add Project </template>
                 <template #modal-body> <CreateProject /> </template>
               </Modal>
