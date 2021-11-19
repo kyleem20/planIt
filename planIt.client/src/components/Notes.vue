@@ -4,7 +4,7 @@
       <img class="profilePic" :src="account.picture" /> {{ account.name }}
       <p>
         {{ n.body }}
-        <button class="btn" @click="removeNote(n.id)">
+        <button class="btn" v-if="n.creatorId == account.id" @click="removeNote(n.id)">
           <i class="text-danger mdi mdi-delete"></i>
         </button>
       </p>

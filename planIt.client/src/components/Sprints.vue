@@ -55,7 +55,7 @@
             </template>
           </Modal>
         </div>
-        <button class="deleteSprint" @click="removeSprint(s.id)">
+        <button class="deleteSprint" v-if="s.creatorId == account.id" @click="removeSprint(s.id)">
           DELETE SPRINT &nbsp;&nbsp;
           <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
         </button>
@@ -113,6 +113,7 @@ export default {
     return {
       state,
       sprints: computed(() => AppState.sprints),
+      account: computed(() => AppState.account),
       project: computed(() => AppState.activeProject),
       taskWeight: computed(() => AppState.tasks.weight),
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId === props.sprintId)),

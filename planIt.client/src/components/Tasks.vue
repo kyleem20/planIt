@@ -101,7 +101,7 @@
         {{ t.weight }}
         <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
       </div>
-      <button class="btn deleteTask" align="right" @click="removeTask(t.id)">
+      <button class="btn deleteTask" align="right" v-if="t.creatorId == account.id" @click="removeTask(t.id)">
         Delete Task &nbsp;&nbsp;
         <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
       </button>
@@ -147,6 +147,7 @@ export default {
     return {
       state,
       sprints: computed(() => AppState.sprints),
+      account: computed(() => AppState.account),
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId === props.sprintId)),
       async removeTask(taskId) {
         try {

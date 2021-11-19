@@ -19,7 +19,11 @@
           </template>
         </Modal>
       </div>
-      <button class="btn-danger m-2 rounded" @click="removeProject(project.id)">
+      <button
+        class="btn-danger m-2 rounded"
+        v-if="project.creatorId == account.id"
+        @click="removeProject(project.id)"
+      >
         Delete Project
       </button>
       <div class="row">
@@ -58,15 +62,17 @@ export default {
         Pop.toast("Issue with active project.vue", 'error')
       }
     }),
-    onMounted(async () => {
-      try {
-        await profileService.getProfile(route.params.id);
-      } catch (error) {
-        logger.error(error);
-        Pop.toast(error.message);
-      }
-    });
+      onMounted(async () => {
+        try {
+          await profileService.getProfile(route.params.id);
+        } catch (error) {
+          logger.error(error);
+          Pop.toast(error.message);
+        }
+      });
     return {
+      account: computed(() => AppState.account),
+
       project: computed(() => AppState.activeProject),
       async removeProject(projectId) {
         try {

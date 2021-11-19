@@ -81,7 +81,7 @@
         0
         <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
       </div>
-      <button class="btn deleteTask">
+      <button class="btn deleteTask" v-if="project.creatorId == account.id">
         Delete Task &nbsp;&nbsp;
         <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
       </button>
@@ -93,7 +93,9 @@
 <script>
 export default {
   setup() {
-    return {}
+    return {
+      account: computed(() => AppState.account),
+    }
   }
 }
 </script>
