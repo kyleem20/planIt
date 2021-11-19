@@ -37,7 +37,7 @@ class TasksService {
     // AppState.tasks.isComplete = !AppState.tasks.isComplete
     const found = AppState.tasks.find(t => t.taskId !== taskId)
     logger.log('complete', found)
-    debugger
+    // debugger
     found.isComplete = !found.isComplete
     AppState.tasks = found.isComplete
   }
