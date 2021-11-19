@@ -33,6 +33,7 @@
           aria-controls="sprintDrawer"
         >
           <!-- TODO total weight -->
+          <!-- {{totalweight()}} -->
           <p>
             {{ s.length }} total wieght
             <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
@@ -145,9 +146,15 @@ export default {
       async dropTask() {
         await tasksService.moveTask(props.tasks.id)
       }
+
+      //TODO add function for adding total weight. Will be loop with a +=
+      // async totalWeight(weight){
+      //   for(let i=0; i < weight.length; i++){
+      //     weight+=weight[i]
+      //   }return weight
+      // }
     }
 
-    //TODO add function for adding total weight. Will be loop with a +=
   }
 
 }
