@@ -1,5 +1,5 @@
 <template>
-  <div class="row" align="left">
+  <div class="row" align="left" draggable="true" @dragstart="prepToMove">
     <div class="col-12 d-flex" v-for="t in tasks" :key="t.id">
       <div class="form-check">
         <!-- <div v-if="t.id"> -->
@@ -182,10 +182,15 @@ export default {
         } catch (error) {
           logger.log(error)
           Pop.toast("Edit was not marked", 'error');
-
-
-
           // tasksService.toggleCheckbox(checkbox, id)
+        }
+      },
+
+      async prepToChange() {
+        try {
+          tasksService.prepToChange(props.sprintId)
+        } catch (error) {
+          logger.error(error)
         }
       }
     }
