@@ -61,7 +61,7 @@ export default {
         try {
           // state.editable.projectId = projectId
           await projectsService.create(state.editable);
-          // router.push({ path: '/projets/' + state.editable })
+          // router.push({ path: '/projects/' + state.editable })
           // Modal.getOrCreateInstance(document.getElementById("CreateProject")).hide();
           // state.editable = {}
 

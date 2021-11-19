@@ -11,14 +11,14 @@
       >
         Add Sprint
       </button>
-       <div :id="'#createSprint-' + project.id">
+      <div :id="'#createSprint-' + project.id">
         <Modal id="addSprint-modal">
           <template #modal-title> Add Sprint </template>
           <template #modal-body>
-           <CreateSprint :projectId="project.id"/>
+            <CreateSprint :projectId="project.id" />
           </template>
         </Modal>
-       </div>
+      </div>
       <button class="btn-danger m-2 rounded" @click="removeProject(project.id)">
         Delete Project
       </button>
@@ -54,7 +54,7 @@ export default {
         }
       } catch (error) {
         logger.error(error)
-        Pop.toast("Issue with active project .vue", 'error')
+        Pop.toast("Issue with active project.vue", 'error')
       }
     })
     return {
@@ -63,13 +63,13 @@ export default {
         try {
           if (projectId) {
             await projectsService.remove(projectId);
-            router.push({ path: '/'})
+            router.push({ path: '/' })
             AppState.activeProject = projectId
-            state.editable = {}
+            // state.editable = {}
           }
         } catch (error) {
           logger.log(error)
-          Pop.toast("Delete task is not working", "error");
+          // Pop.toast("Delete task is not working", "error");
         }
         return projectsService.getAll()
       },
