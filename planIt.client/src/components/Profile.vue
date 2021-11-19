@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-11">
       <div class="profile form component" >
-        <form @submit.prevent="edit(account.id)">
+        <form @submit.prevent="edit(account)">
           <label for="">Profile Picture</label>
           <input
             type="url"
