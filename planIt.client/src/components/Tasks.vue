@@ -25,7 +25,7 @@
           rolw="button"
           aria-controls="notesOffCanvas"
         >
-          0 <img class="commentImg" src="https://i.imgur.com/rlHQekg.png" />
+          Notes <img class="commentImg" src="https://i.imgur.com/rlHQekg.png" />
         </button>
         <div
           class="offcanvas offcanvas-end"
