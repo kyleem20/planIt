@@ -41,38 +41,8 @@
         </div>
       </div>
     </div>
-    <!-- NOTE This is where all projects will be displayed -->
-    <div class="row">
-      <!-- <div class="col-12"> -->
-      <!-- NOTE Can be changed to add new sprint -->
-      <!--<div class="card p-3 bg-white rounded elevation-3 mt-5">
-          <div class="card-body">
-            <div class="row justify-content-between">
-              <div class="col-12 mx-3" align="right">
-                 <button
-                    class="btn createProjectBtn border-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#addProject-modal"
-                  >
-                    Create Project
-                  </button>
-                  <Modal id="addProject-modal">
-                    <template #modal-title> Add Project </template>
-                    <template #modal-body>
-                      <AddProjectModal />
-                    </template>
-                  </Modal>
-                </div> -->
-      <div class="col-10" align="left">
-        <ActiveProject />
-        <!-- </div>
-              </div>
-            </div>
-          </div> -->
-      </div>
-    </div>
+    <ActiveProject />
   </div>
-  <!-- </div> -->
 </template>
 
 
