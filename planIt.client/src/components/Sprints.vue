@@ -9,7 +9,16 @@
       <h5 class="sprintsText">{{ s.name }}</h5>
       <p>{{ s.startDate }}</p>
 
-      <div class="card-header bg-transparent d-flex justify-content-between">
+      <div
+        class="
+          card-header
+          bg-transparent
+          d-flex
+          justify-content-between
+          align-content-middle
+        "
+        align="middle"
+      >
         <button
           class="sprintInfoText btn col-3"
           data-bs-toggle="collapse"
