@@ -1,4 +1,5 @@
 import { AppState } from "../AppState";
+import { logger } from "../utils/Logger";
 import { api } from "./AxiosService";
 
 
@@ -32,8 +33,13 @@ class TasksService {
   }
 
   async taskIsComplete(taskId, projectId) {
-    AppState.tasks.isComplete = !AppState.tasks.isComplete
     await api.put(`api/projects/${projectId}/tasks/${taskId}`, taskId)
+    // AppState.tasks.isComplete = !AppState.tasks.isComplete
+    const found = AppState.tasks.find(t => t.taskId !== taskId)
+    logger.log('complete', found)
+    debugger
+    found.isComplete = !found.isComplete
+    AppState.tasks = found.isComplete
   }
 }
 
