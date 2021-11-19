@@ -3,7 +3,7 @@
     <Navbar />
     <div class="col-12">
       <div class="row sprintInfoRow">
-        <div class="col-1 sideTabBtns pt-4 ps-0">
+        <div class="col-2 sideTabBtns pt-4 ps-0">
           <!-- NOTE This is the Profile, their projects offcanvas: needs edit profile inside -->
           <!-- Must always display to allow navigation between projects -->
           <button
@@ -40,8 +40,8 @@
           </div>
         </div>
       </div>
+      <ActiveProject />
     </div>
-    <ActiveProject />
   </div>
 </template>
 

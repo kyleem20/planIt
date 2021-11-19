@@ -1,7 +1,7 @@
 <template>
   <div class="row m-0 justify-content-center">
     <div
-      class="col-11 card border-info elevation-3 m-2"
+      class="col-12 card border-info elevation-3 m-2"
       v-for="s in sprints"
       :key="s.id"
       :sprint="s"
