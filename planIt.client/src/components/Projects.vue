@@ -1,16 +1,18 @@
 <template>
   <div class="row px-3">
     <div class="col-12">
-      <div
-        class="card m-2 p-3 selectable"
-        v-for="p in projects"
-        :key="p.id"
-        :project="p"
-        @click="linkProject(p.id)"
-      >
-        <h1 class="pnText">{{ p.name }}</h1>
-        <p>{{ p.description }}</p>
-        <span class="m-4"> </span>
+      <div class="card-header">
+        <div
+          class="card-body m-3 p-3 selectable elevation-2 rounded"
+          v-for="p in projects"
+          :key="p.id"
+          :project="p"
+          @click="linkProject(p.id)"
+        >
+          <h1 class="pnText">{{ p.name }}</h1>
+          <p>{{ p.description }}</p>
+          <span class="m-4"></span>
+        </div>
       </div>
     </div>
   </div>
@@ -42,7 +44,7 @@ export default {
           Pop.toast("error")
         }
       },
- 
+
     }
 
     //   setup() {

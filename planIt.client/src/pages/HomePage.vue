@@ -30,7 +30,7 @@
           </template>
         </Modal> -->
 
-          <div
+          <!-- <div
             class="offcanvas offcanvas-start"
             tabindex="-1"
             id="projectOffCanvas"
@@ -52,32 +52,28 @@
                 </p>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- NOTE This is where all projects will be displayed -->
       <div class="row">
         <div class="col-12">
-          <div class="card p-3 bg-white rounded elevation-3 mt-5">
-            <div class="card-body">
-              <div class="row justify-content-between">
-                <div class="col-2 mx-3" align="right">
-                  <button
-                    class="btn createProjectBtn border-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#addProject-modal"
-                  >
-                    Create Project
-                  </button>
-                  <Modal id="addProject-modal">
-                    <template #modal-title> Add Project </template>
-                    <template #modal-body> <CreateProject /> </template>
-                  </Modal>
-                </div>
-                <div class="col-10" align="left">
-                  <Projects />
-                </div>
-              </div>
+          <div class="row justify-content-between">
+            <div class="col-2 mx-3" align="right">
+              <button
+                class="btn createProjectBtn border-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#addProject-modal"
+              >
+                Create Project
+              </button>
+              <Modal id="addProject-modal">
+                <template #modal-title> Add Project </template>
+                <template #modal-body> <CreateProject /> </template>
+              </Modal>
+            </div>
+            <div class="col-10" align="left">
+              <Projects />
             </div>
           </div>
         </div>
@@ -97,7 +93,7 @@ import { AppState } from '../AppState';
 
 export default {
   name: 'Home',
-  
+
   setup() {
     return {
       account: computed(() => AppState.account),
