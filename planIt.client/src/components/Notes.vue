@@ -1,11 +1,13 @@
 <template>
   <div class="note row" v-for="n in notes" :key="n.id">
     <div class="col-12">
-      <img class="profilePic" :src="account.picture" />
-      {{ n.body }}
-      <button class="btn" @click="removeNote(n.id)">
-        <i class="text-danger mdi mdi-delete"></i>
-      </button>
+      <img class="profilePic" :src="account.picture" /> {{ account.name }}
+      <p>
+        {{ n.body }}
+        <button class="btn" @click="removeNote(n.id)">
+          <i class="text-danger mdi mdi-delete"></i>
+        </button>
+      </p>
     </div>
   </div>
 </template>
