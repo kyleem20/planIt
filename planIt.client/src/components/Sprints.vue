@@ -34,7 +34,7 @@
         >
           <!-- TODO total weight -->
           <p>
-            {{ s.length }} total wieght
+            {{ sprintWeights[s.id] || 0 }} total wieght
             <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
           </p>
         </button>
@@ -115,6 +115,15 @@ export default {
       project: computed(() => AppState.activeProject),
       taskWeight: computed(() => AppState.tasks.weight),
       tasks: computed(() => AppState.tasks.filter(t => t.sprintId === props.sprintId)),
+      sprintWeights: computed(() => {
+        const weights = {}
+        AppState.tasks.forEach(t => {
+          const weight = 0
+          weights[t.sprintId] = weights[t.sprintId] || 0
+          weights[t.sprintId] += t.weight
+        })
+        return weights
+      }),
 
       async removeSprint(sprintId) {
         try {
@@ -140,6 +149,7 @@ export default {
           Pop.toast("Issue with active project .vue", 'error')
         }
       },
+
 
       //NOTE draggable
       async dropTask() {
