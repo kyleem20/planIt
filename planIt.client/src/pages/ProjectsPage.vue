@@ -32,7 +32,9 @@
             </div>
             <div class="col-10" align="left">
               <div class="offcanvas-body">
+                <div class="offcanvas-scroll pb-5">
                 <Projects />
+                </div>
               </div>
             </div>
           </div>
@@ -85,6 +87,10 @@ export default {
 
 
 <style lang="scss" scoped>
+.offcanvas-scroll {
+overflow-y: auto;
+height: 100vh;
+}
 .sprintsText {
   line-height: 1;
   font-size: 1.5rem;
