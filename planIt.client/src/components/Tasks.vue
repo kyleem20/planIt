@@ -16,8 +16,8 @@
         <h6>
           <b> {{ t.name }} </b>
         </h6>
-        <!-- </div> -->
-        <!-- <p> Created - DATE | Completed - DATE</p> -->
+        <!-- </div> test -->
+        <!-- <p> Created - DATE | Completed  - DATE</p> - -->
         <button
           class="btn"
           data-bs-toggle="offcanvas"
@@ -101,7 +101,12 @@
         {{ t.weight }}
         <img src="https://i.imgur.com/P7nHMkP.png" class="weight" />
       </div>
-      <button class="btn deleteTask" align="right" v-if="t.creatorId == account.id" @click="removeTask(t.id)">
+      <button
+        class="btn deleteTask"
+        align="right"
+        v-if="t.creatorId == account.id"
+        @click="removeTask(t.id)"
+      >
         Delete Task &nbsp;&nbsp;
         <img class="trashCan" src="https://i.imgur.com/SHjFXfJ.png" />
       </button>
@@ -177,9 +182,9 @@ export default {
 
       async toggleComplete(task) {
         try {
-            // debugger
-            task.isComplete =!task.isComplete
-            await tasksService.isComplete(task, projectId)
+          // debugger
+          task.isComplete = !task.isComplete
+          await tasksService.isComplete(task, projectId)
           Pop.toast("Complete", 'success')
         } catch (error) {
           logger.log(error)
