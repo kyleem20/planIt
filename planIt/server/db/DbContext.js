@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import { AccountSchema, ProfileSchema } from '../models/Account'
-import { NoteSchema } from '../models/note'
+import { NoteSchema } from '../models/Note'
 import { ProjectSchema } from '../models/Project'
 import { SprintSchema } from '../models/Sprint'
 import { TaskSchema } from '../models/Task'
